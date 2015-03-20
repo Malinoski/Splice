@@ -1,0 +1,1 @@
+<br<c:if test="$currentLineBreak/@id != ''"> id="<c:get select="$currentLineBreak/@id" />"</c:if><c:if test="$currentLineBreak/@class != ''"> class="<c:get select="$currentLineBreak/@class" />"</c:if>/>

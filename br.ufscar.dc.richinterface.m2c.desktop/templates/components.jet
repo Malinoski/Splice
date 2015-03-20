@@ -1,0 +1,109 @@
+<c:iterate select="$currentComponents" var="currentComponent" delimiter="
+">
+<c:choose select="$currentComponent">
+<c:when test="self::Heading">
+<c:setVariable var="currentHeading" select="$currentComponent"/>
+<c:include template="templates/heading.jet"/>
+</c:when>
+<c:when test="self::Span">
+<c:setVariable var="currentSpan" select="$currentComponent"/>
+<c:include template="templates/span.jet"/>
+</c:when>
+<c:when test="self::PhraseElement">
+<c:setVariable var="currentPhraseElement" select="$currentComponent"/>
+<c:include template="templates/phraseElement.jet"/>
+</c:when>
+<c:when test="self::Paragraph">
+<c:setVariable var="currentParagraph" select="$currentComponent"/>
+<c:include template="templates/paragraph.jet"/>
+</c:when>
+<c:when test="self::lineBreaks">
+<c:setVariable var="currentLineBreak" select="$currentComponent"/>
+<c:include template="templates/lineBreak.jet"/>
+</c:when>
+<c:when test="self::Link">
+<c:setVariable var="currentLink" select="$currentComponent"/>
+<c:include template="templates/link.jet"/>
+</c:when>
+<c:when test="self::Div">
+<c:setVariable var="currentDiv" select="$currentComponent"/>
+<c:include template="templates/div.jet"/>
+</c:when>
+<c:when test="self::Image">
+<c:setVariable var="currentImage" select="$currentComponent"/>
+<c:include template="templates/image.jet"/>
+</c:when>
+<c:when test="self::OrderedList">
+<c:setVariable var="currentOrderedList" select="$currentComponent"/>
+<c:include template="templates/orderedList.jet"/>
+</c:when>
+<c:when test="self::UnorderedList">
+<c:setVariable var="currentUnorderedList" select="$currentComponent"/>
+<c:include template="templates/unorderedList.jet"/>
+</c:when>
+<c:when test="self::forms">
+<c:setVariable var="currentForm" select="$currentComponent"/>
+<c:include template="templates/form.jet"/>
+</c:when>
+<c:when test="self::fieldsets">
+<c:setVariable var="currentFieldset" select="$currentComponent"/>
+<c:include template="templates/fieldset.jet"/>
+</c:when>
+<c:when test="self::TextField">
+<c:setVariable var="currentTextField" select="$currentComponent"/>
+<c:include template="templates/textField.jet"/>
+</c:when>
+<c:when test="self::Button">
+<c:setVariable var="currentButton" select="$currentComponent"/>
+<c:include template="templates/button.jet"/>
+</c:when>
+<c:when test="self::TextArea">
+<c:setVariable var="currentTextArea" select="$currentComponent"/>
+<c:include template="templates/textArea.jet"/>
+</c:when>
+<c:when test="self::Select">
+<c:setVariable var="currentSelect" select="$currentComponent"/>
+<c:include template="templates/select.jet"/>
+</c:when>
+<c:when test="self::Checkbox">
+<p>
+<f:indent text="	" depth="1">
+<c:setVariable var="currentCheckbox" select="$currentComponent"/>
+<c:include template="templates/checkbox.jet"/></f:indent>
+</p></c:when>
+<c:when test="self::checkGroups">
+<c:setVariable var="currentCheckGroup" select="$currentComponent"/>
+<c:include template="templates/checkGroup.jet"/>
+</c:when>
+<c:when test="self::Radio">
+<p>
+<f:indent text="	" depth="1">
+<c:setVariable var="currentRadio" select="$currentComponent"/>
+<c:include template="templates/radio.jet"/></f:indent>
+</p></c:when>
+<c:when test="self::radioGroups">
+<c:setVariable var="currentRadioGroup" select="$currentComponent"/>
+<c:include template="templates/radioGroup.jet"/>
+</c:when>
+<c:when test="self::InputFile">
+<c:setVariable var="currentInputFile" select="$currentComponent"/>
+<c:include template="templates/inputFile.jet"/>
+</c:when>
+<c:when test="self::TabbedPanel">
+<c:setVariable var="currentTabbedPanel" select="$currentComponent"/>
+<c:include template="templates/tabbedPanel.jet"/>
+</c:when>
+<c:when test="self::AccordionPanel">
+<c:setVariable var="currentAccordionPanel" select="$currentComponent"/>
+<c:include template="templates/accordionPanel.jet"/>
+</c:when>
+<c:when test="self::MessageDialog">
+<c:setVariable var="currentMessageDialog" select="$currentComponent"/>
+<c:include template="templates/messageDialog.jet"/>
+</c:when>
+<c:when test="self::Datepicker">
+<c:setVariable var="currentDatepicker" select="$currentComponent"/>
+<c:include template="templates/datepicker.jet"/>
+</c:when>
+</c:choose>
+</c:iterate>

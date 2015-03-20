@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="libs/adl-parser-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libs/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/joda-time-2.2.jar"/>
+	<classpathentry kind="lib" path="libs/jsr-275-0.9.4.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="libs/measure-serv-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/mini-termserv-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/openehr-aom-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/openehr-ap-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/openehr-rm-core-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/openehr-rm-domain-1.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/saxon9-unpack.jar"/>
+	<classpathentry kind="lib" path="libs/saxon9-xqj.jar"/>
+	<classpathentry kind="lib" path="libs/saxon9he.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,1 @@
+<c:iterate select="$currentComponent/events" var="currentEvent" delimiter=" "><c:get select="$currentEvent/@type"/>="<c:iterate select="$currentEvent/triggerScript" var="currentTriggerScript"><c:get select="removeWhitespace($currentTriggerScript/@name)"/>(this)</c:iterate>"</c:iterate>

@@ -1,0 +1,6 @@
+<c:iterate select="$currentNavigationRegionHorizontal/linkGroups" var="currentLinkGroup" delimiter="
+">
+<ul class="sf-menu">
+	<f:indent text="	" depth="1">
+	<c:include template="templates/linkGroupHorizontal.jet"/></f:indent>
+</ul></c:iterate>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ACMEHealth:ACMEFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ACMEHealth="ACMEHealth" xmlns:EmergencyFamily="EmergencyFamily">
+  <entries xsi:type="EmergencyFamily:EmergencySystem" name="AToMS">
+    <paramedic name="Paramedic Component">
+      <observationForms name="TemapleParamedicObservation-v2">
+        <archetypeIds>TemapleParamedicObservation-v2</archetypeIds>
+      </observationForms>
+      <instructionViews name="prescricao">
+        <archetypeIds>prescricao</archetypeIds>
+      </instructionViews>
+    </paramedic>
+    <specialist name="Cardiologist Component">
+      <observationViews name="TemapleParamedicObservation-v2">
+        <archetypeIds>TemapleParamedicObservation-v2</archetypeIds>
+      </observationViews>
+      <instructionForms name="prescricao">
+        <archetypeIds>prescricao</archetypeIds>
+      </instructionForms>
+    </specialist>
+  </entries>
+</ACMEHealth:ACMEFile>

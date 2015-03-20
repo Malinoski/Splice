@@ -1,0 +1,66 @@
+-- @path openehr=/OpenEHR2RichUbi/transformation/openehr2008.ecore
+
+library LibHelpers;
+
+helper context openEHRMM!ARCHETYPE def: getRmType(): String =
+	self.definition.rmTypeName;
+
+--helper context prop!Properties def: getFileType(): String =
+--	self.keys->select(x|x.keyName= 'file')->first().value; -- (jsp/php/html)
+--	
+--helper context prop!Properties def: getLanguage(): String =
+--	self.keys->select(x|x.keyName= 'language')->first().value;
+
+--helper context openEHRMM!COBJECT def: isElement:Boolean = 
+--	if self.rmTypeName = 'ELEMENT'
+--		then true
+--		else false
+--	endif;
+
+--helper context openEHRMM!CCOMPLEXOBJECT def: isDvText:Boolean = 
+--	if self.rmTypeName = 'DV_TEXT'
+--		then true
+--		else false
+--	endif;
+
+--helper context openEHRMM!CCOMPLEXOBJECT def: isDvCodeText:Boolean = 
+--	if self.rmTypeName = 'DV_CODED_TEXT'
+--		then true
+--		else false
+--	endif;
+
+----helper context openehr!ARCHETYPE def: getOntologyName(id : String, p: prop!Properties): String = 
+helper def: getOntName(id : String,obj : openEHRMM!ARCHETYPE): String =
+	if id.startsWith('at')  
+		then
+			obj.ontology.termDefinitions->select(x|x.language = 'en')->first().items
+						  					  ->select(y|y.code= id)->first().items
+							 				  ->select(z|z.id= 'text')->first().value
+			-- archetype.originalLanguage.codeString.debug();			
+		else
+			''
+			
+	endif;
+
+
+--helper context openEHRMM!CCODEPHRASE def : getCodeList() : String =
+--	self.codeList->collect(e | e)
+--		->asSet()->
+--			iterate(code; result : String = '' |
+--				result +
+--				if result = ''
+--					then code
+--					else ' and ' + code
+--				endif);
+
+--helper def: respectiveARCHETYPE(co: openEHRMM!COBJECT): openEHRMM!ARCHETYPE = 
+--	for (iterator in ARCHETYPE.allInstances()->asSequence()) {
+--		statements
+--	}openehr!ARCHETYPE.allInstances()->asSequence()->first().ontology.termDefinitions->select(x|x.language = 'en')->first().items
+--							  					  ->select(y|y.code= id)->first().items
+--								 				  ->select(z|z.id= 'text')->first().value; 
+	
+
+
+	
+	

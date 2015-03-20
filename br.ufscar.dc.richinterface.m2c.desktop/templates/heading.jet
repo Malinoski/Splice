@@ -1,0 +1,6 @@
+<<c:get select="$currentHeading/@level" /> id="<c:get select="$currentHeading/@id" />" class="<c:get select="$currentHeading/@class" />"<c:if test="$currentHeading/events"> <c:include template="templates/event.jet"/></c:if>>
+<f:indent text="	" depth="1">
+<c:get select="$currentHeading/@text" /><c:if test="$currentHeading/*">
+<c:setVariable var="currentComponents" select="$currentHeading/*"/>
+<c:include template="templates/components.jet"/></c:if></f:indent>
+</<c:get select="$currentHeading/@level" />>

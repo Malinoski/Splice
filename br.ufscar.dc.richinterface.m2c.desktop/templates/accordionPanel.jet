@@ -1,0 +1,10 @@
+<div id="<c:get select="$currentAccordionPanel/@id" />" class="<c:get select="$currentAccordionPanel/@class" />">
+	<c:iterate select="$currentAccordionPanel/sections" var="currentSection">
+	<h3><a href="#"><c:get select="$currentSection/@title"/></a></h3>
+	<div><c:if test="$currentSection/*">
+	<f:indent text="		" depth="1">
+	<c:setVariable var="currentComponents" select="$currentSection/*"/>
+	<c:include template="templates/components.jet"/></f:indent></c:if>
+	</div>
+	</c:iterate>
+</div>

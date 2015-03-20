@@ -1,0 +1,21 @@
+<p>
+	<label<c:if test="$currentCheckGroup/label"> id="<c:get select="$currentCheckGroup/label/@id" />" class="<c:get select="$currentCheckGroup/label/@class" />"</c:if>><c:if test="$currentCheckGroup/label"><c:choose select="$currentCheckGroup/label/@format"><c:when test="'Emphasis'"><em></c:when><c:when test="'StrongerEmphasis'"><strong></c:when><c:when test="'Citation'"><cite></c:when><c:when test="'Definition'"><dfn></c:when><c:when test="'ComputerCode'"><code></c:when><c:when test="'SampleProgramOutput'"><samp></c:when><c:when test="'EntryFromUser'"><kdb></c:when><c:when test="'VariableInstance'"><var></c:when><c:when test="'Abbreviation'"><abbr></c:when><c:when test="'Acronym'"><acronym></c:when></c:choose><c:get select="$currentCheckGroup/label/@text" /><c:choose select="$currentCheckGroup/label/@format"><c:when test="'Emphasis'"></em></c:when><c:when test="'StrongerEmphasis'"></strong></c:when><c:when test="'Citation'"></cite></c:when><c:when test="'Definition'"></dfn></c:when><c:when test="'ComputerCode'"></code></c:when><c:when test="'SampleProgramOutput'"></samp></c:when><c:when test="'EntryFromUser'"></kdb></c:when><c:when test="'VariableInstance'"></var></c:when><c:when test="'Abbreviation'"></abbr></c:when><c:when test="'Acronym'"></acronym></c:when></c:choose></c:if><c:if test="$currentCheckGroup/checks"><br/></c:if>
+		<c:choose select="$currentCheckGroup/@orientation">
+		<c:when test="'Horizontal'">
+		<c:iterate select="$currentCheckGroup/checks" var="currentCheckbox">
+		<f:indent text="		" depth="1">
+		<c:setVariable select="$currentCheckbox" var = "currentComponent"/>
+		<c:include template="templates/checkbox.jet"/></f:indent>
+		</c:iterate>
+		</c:when>
+		<c:when test="'Vertical'">
+		<c:iterate select="$currentCheckGroup/checks" var="currentCheckbox" delimiter="		<br/>
+">
+		<f:indent text="		" depth="1">
+		<c:setVariable select="$currentCheckbox" var = "currentComponent"/>
+		<c:include template="templates/checkbox.jet"/></f:indent>
+		</c:iterate>
+		</c:when>
+		</c:choose>
+	</label>
+</p>

@@ -1,0 +1,13 @@
+<p>
+	<label<c:if test="$currentSelect/label"> id="<c:get select="$currentSelect/label/@id" />" class="<c:get select="$currentSelect/label/@class" />"</c:if>><c:if test="$currentSelect/label"><c:choose select="$currentSelect/label/@format"><c:when test="'Emphasis'"><em></c:when><c:when test="'StrongerEmphasis'"><strong></c:when><c:when test="'Citation'"><cite></c:when><c:when test="'Definition'"><dfn></c:when><c:when test="'ComputerCode'"><code></c:when><c:when test="'SampleProgramOutput'"><samp></c:when><c:when test="'EntryFromUser'"><kdb></c:when><c:when test="'VariableInstance'"><var></c:when><c:when test="'Abbreviation'"><abbr></c:when><c:when test="'Acronym'"><acronym></c:when></c:choose><c:get select="$currentSelect/label/@text" /><c:choose select="$currentSelect/label/@format"><c:when test="'Emphasis'"></em></c:when><c:when test="'StrongerEmphasis'"></strong></c:when><c:when test="'Citation'"></cite></c:when><c:when test="'Definition'"></dfn></c:when><c:when test="'ComputerCode'"></code></c:when><c:when test="'SampleProgramOutput'"></samp></c:when><c:when test="'EntryFromUser'"></kdb></c:when><c:when test="'VariableInstance'"></var></c:when><c:when test="'Abbreviation'"></abbr></c:when><c:when test="'Acronym'"></acronym></c:when></c:choose></c:if>
+		<select id="<c:get select="$currentSelect/@id" />" class="<c:get select="$currentSelect/@class" />" name="<c:get select="$currentSelect/@name" />"<c:if test="$currentSelect/@size > 0"> size="<c:get select="$currentSelect/@size" />"</c:if><c:if test="$currentSelect/@multiple = 'true'"> multiple="multiple"</c:if><c:if test="$currentSelect/events"> <c:include template="templates/event.jet"/></c:if>><c:if test="$currentSelect/items">
+		<c:iterate select="$currentSelect/items" var="currentSelectItem">
+			<option value="<c:get select="$currentSelectItem/@value" />"<c:if test="$currentSelectItem/@selected = 'true'"> selected="selected"</c:if>><c:get select="$currentSelectItem/@itemLabel" /></option>
+		</c:iterate>
+		</c:if></select>
+	</label><c:if test="$currentSelect/accompanyingPhrase">
+	<c:iterate select="$currentSelect/accompanyingPhrase" var="currentPhraseElement" delimiter="
+">
+	&nbsp;
+<f:indent text="	" depth="1"><c:include template="templates/phraseElement.jet"/></f:indent></c:iterate></c:if>
+</p>

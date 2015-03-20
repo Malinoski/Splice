@@ -1,0 +1,2 @@
+<c:setVariable var="currentComponents" select="$currentFooterRegion/*"/>
+<c:include template="templates/components.jet"/>

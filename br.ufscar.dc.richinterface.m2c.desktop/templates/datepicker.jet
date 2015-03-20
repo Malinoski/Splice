@@ -1,0 +1,2 @@
+<c:setVariable var="currentTextField" select="$currentDatepicker"/>
+<c:include template="templates/textField.jet"/>

@@ -1,0 +1,5 @@
+<form name="<c:get select="$currentForm/@name" />" id="<c:get select="$currentForm/@id" />" class="<c:get select="$currentForm/@class" />" action="<c:iterate select="$currentForm/action" var="currentAction"><c:get select="removeWhitespace($currentAction/@fileName)" />.<c:get select="$portal/@documentsExtension" /></c:iterate>" method="<c:get select="$currentForm/@method" />"<c:if test="$currentForm/events"> <c:include template="templates/event.jet"/></c:if>><c:if test="$currentForm/*">
+<f:indent text="	" depth="1">
+<c:setVariable var="currentComponents" select="$currentForm/*"/>
+<c:include template="templates/components.jet"/></f:indent></c:if>
+</form>

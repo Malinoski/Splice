@@ -1,0 +1,100 @@
+<%@taglib prefix="ws" id="org.eclipse.jet.workspaceTags" %>
+<script type="text/javascript">
+	$(function() {
+		<c:deepIterate select="*" initialContext="$currentDocument" var="currentComponent" delimiter="
+">
+		<c:choose select="$currentComponent">
+		<c:when test="self::AccordionPanel">
+		<c:setVariable var="currentAccordionPanel" select="$currentComponent"/>
+		$("#<c:get select="$currentAccordionPanel/@id" />").accordion();
+		</c:when>
+		<c:when test="self::TabbedPanel">
+		<c:setVariable var="currentTabbedPanel" select="$currentComponent"/>
+		$("#<c:get select="$currentTabbedPanel/@id" />").tabs();
+		</c:when>
+		<c:when test="self::MessageDialog">
+		<c:setVariable var="currentMessageDialog" select="$currentComponent"/>
+		$("#<c:get select="$currentMessageDialog/@id" />").dialog({
+			autoOpen: <c:get select="$currentMessageDialog/@autoOpen" />,
+			modal: <c:get select="$currentMessageDialog/@modal" />,
+			height: <c:get select="$currentMessageDialog/@height" />,
+			maxHeight: <c:get select="$currentMessageDialog/@maxHeightResize" />,
+			minHeight: <c:get select="$currentMessageDialog/@minHeightResize" />,
+			width: <c:get select="$currentMessageDialog/@width" />,
+			maxWidth: <c:get select="$currentMessageDialog/@maxWidthResize" />,
+			minWidth: <c:get select="$currentMessageDialog/@minWidthResize" />,
+			resizable: <c:get select="$currentMessageDialog/@resizable" /><c:if test="$currentMessageDialog/buttons">,
+			buttons: {
+			<c:iterate select="$currentMessageDialog/buttons" var="currentMessageDialogButton" delimiter=",
+">
+				'<c:get select="$currentMessageDialogButton/@label" />': function() {
+					<c:choose select="$currentMessageDialogButton/@event">
+					<c:when test=" 'closeDialog' ">
+					$(this).dialog('close');
+					</c:when>
+					<c:otherwise>
+					//TO-DO
+					</c:otherwise>
+					</c:choose>
+				}</c:iterate>
+			}</c:if>
+		});
+		</c:when>
+		<c:when test="self::Datepicker">
+		<c:setVariable var="currentDatepicker" select="$currentComponent"/>
+		$("#<c:get select="$currentDatepicker/@id" />").datepicker({
+			dateFormat: '<c:get select="$currentDatepicker/@dateFormat" />',
+			showOtherMonths: true, 
+			selectOtherMonths: true,
+			showButtonPanel: <c:get select="$currentDatepicker/@showButtonClosePanel" />,
+			numberOfMonths: <c:choose><c:when test="$currentDatepicker/@numberMonthsToShow > 0"><c:get select="$currentDatepicker/@numberMonthsToShow" /></c:when><c:otherwise>1</c:otherwise></c:choose>,			
+			changeMonth: <c:get select="$currentDatepicker/@showMonthMenu" />,
+			changeYear: <c:get select="$currentDatepicker/@showYearMenu" />,
+			showWeek: <c:get select="$currentDatepicker/@showWeekOfYear" />,<c:if test="$currentDatepicker/@showWeekOfYear = 'true'"> 
+			firstDay: 1,</c:if><c:if test="$currentDatepicker/@showButtonImage = 'true'"><ws:copyFile src="resources/images/calendar.gif" target="images/{$currentDatepicker/@id}_calendar.gif" binary="true"/>
+			showOn: 'button',
+			buttonImage: 'images/<c:get select="$currentDatepicker/@id" />_calendar.gif',
+			buttonImageOnly: true</c:if>
+		});
+		$("#<c:get select="$currentDatepicker/@id" />").datepicker('option', $.datepicker.regional['<c:get select="$currentDatepicker/@locale" />']);
+		</c:when>
+		<c:when test="self::forms"><c:setVariable var="currentForm" select="$currentComponent"/>
+		var options<c:get select="uppercaseFirst($currentForm/@name)"/> = { target: '#contentRegion'};
+		$('#<c:get select="$currentForm/@id" />').submit(function() { 
+			$(this).ajaxSubmit(options<c:get select="uppercaseFirst($currentForm/@name)"/>); 
+			return false; 
+		}); 
+		</c:when>
+		</c:choose>
+		</c:deepIterate>
+	});
+	<c:deepIterate select="*" initialContext="$currentDocument" var="currentComponent" delimiter="
+">
+	<c:choose select="$currentComponent">
+<c:when test="self::triggerScript">
+	<c:setVariable var="currentScript" select="$currentComponent"/>
+	function <c:get select="$currentScript/@name" />(element) {
+	<c:choose>
+	<c:when test="$currentScript/@implementation != ''">
+		<c:get select="$currentScript/@implementation" />
+	</c:when>
+	<c:otherwise>
+		//TO-DO
+	</c:otherwise>
+	</c:choose>
+	}
+</c:when><%-- <c:when test="self::forms"><c:setVariable var="currentForm" select="$currentComponent"/>
+	validateForm<c:get select="uppercaseFirst(camelCase($currentForm/@name))"/>(form) {
+	<c:deepIterate select="*" initialContext="$currentForm" var="currentFormComponent" delimiter="
+">
+		<c:choose select="$currentFormComponent">
+		<c:when test="self::numberConstraint">
+		
+		</c:when>
+		</c:choose>
+	</c:deepIterate>
+	}
+	</c:when> --%>
+	</c:choose>
+	</c:deepIterate>
+</script>

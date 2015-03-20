@@ -1,0 +1,5 @@
+<a href="javascript:loadContent('<c:iterate select="$currentLink/target" var="currentTarget"><c:get select="removeWhitespace($currentTarget/@fileName)"/>.<c:get select="$portal/@documentsExtension"/></c:iterate>');" id="<c:get select="$currentLink/@id" />" class="<c:get select="$currentLink/@class" />" title="<c:get select="$currentLink/@title" />"<c:if test="$currentLink/events"> <c:include template="templates/event.jet"/></c:if>>
+<f:indent text="	" depth="1">
+<c:get select="$currentLink/@text"/>
+<c:setVariable var="currentComponents" select="$currentLink/*"/>
+<c:include template="templates/components.jet"/></f:indent></a>

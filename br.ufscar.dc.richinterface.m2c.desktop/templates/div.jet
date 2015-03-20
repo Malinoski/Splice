@@ -1,0 +1,5 @@
+<div id="<c:get select="$currentDiv/@id" />" class="<c:get select="$currentDiv/@class" />" align="<c:get select="$currentDiv/@align" />"<c:if test="$currentDiv/events"> <c:include template="templates/event.jet"/></c:if>><c:if test="$currentDiv/*">
+<f:indent text="	" depth="1">
+<c:setVariable var="currentComponents" select="$currentDiv/*"/>
+<c:include template="templates/components.jet"/></f:indent></c:if>
+</div>

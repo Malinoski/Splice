@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/OpenEHR2RichUbi.v5/src"
+    modelPluginID="OpenEHR2RichUbi.v5" modelName="ACMEHealthv2" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>ACMEHealthv2.ecore</foreignModel>
+  <genPackages prefix="ACMEHealth" disposableProviderFactory="true" ecorePackage="ACMEHealthv2.ecore#/0">
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/ACMEFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/ACMEFile/entries"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/0/ACMEEntry"/>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/0/Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Element/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Element/representations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Element/property"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Type"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/System">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/System/componentDeclaration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/System/connectorDeclaration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/System/attachments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/System/bindings"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Representation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Representation/systems"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/0/Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Component/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/ComponentInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/ComponentInstance/instanceOf"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/ComponentType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/ComponentType/extend"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Port"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Connector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Connector/roles"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Connector/system"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Role"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Property/val"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/0/Link">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Link/systemBinding"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/0/Link/systemAttachment"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Attachment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Attachment/comp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Attachment/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Attachment/con"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Attachment/role"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/0/Binding">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Binding/compSrc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Binding/portSrc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Binding/compDest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/0/Binding/portDest"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="PrimitiveTypes" disposableProviderFactory="true" ecorePackage="ACMEHealthv2.ecore#/1">
+    <genDataTypes ecoreDataType="ACMEHealthv2.ecore#/1/Boolean"/>
+    <genDataTypes ecoreDataType="ACMEHealthv2.ecore#/1/Integer"/>
+    <genDataTypes ecoreDataType="ACMEHealthv2.ecore#/1/String"/>
+  </genPackages>
+  <genPackages prefix="ACMEGUI" disposableProviderFactory="true" ecorePackage="ACMEHealthv2.ecore#/2">
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/2/PropertyEHR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/2/PropertyEHR/archetypeIds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ACMEHealthv2.ecore#/2/PropertyEHR/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/2/EHRView"/>
+    <genClasses image="false" ecoreClass="ACMEHealthv2.ecore#/2/EHRForm"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRObservationView"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRObservationForm"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRInstructionView"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRInstructionForm"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRActionForm"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHRActionView"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHREvaluationView"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/2/EHREvaluationForm"/>
+  </genPackages>
+  <genPackages prefix="EmergencyFamily" disposableProviderFactory="true" ecorePackage="ACMEHealthv2.ecore#/3">
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/3/EmergencySystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/EmergencySystem/paramedic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/EmergencySystem/specialist"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/EmergencySystem/TeleconsultationCenter"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/3/TeleconsultationCenter"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/3/Paramedic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/Paramedic/observationForms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/Paramedic/instructionViews"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/3/Specialist">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/Specialist/observationViews"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/3/Specialist/instructionForms"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="EpidemiologyFamily" disposableProviderFactory="true" ecorePackage="ACMEHealthv2.ecore#/4">
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/4/EpidemiologySystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/EpidemiologySystem/dataCenter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/EpidemiologySystem/collector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/EpidemiologySystem/epidemiologist"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/4/DataCenter"/>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/4/Collector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/Collector/observationForms"/>
+    </genClasses>
+    <genClasses ecoreClass="ACMEHealthv2.ecore#/4/Epidemiologist">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/Epidemiologist/observationViews"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ACMEHealthv2.ecore#/4/Epidemiologist/evaluationForms"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

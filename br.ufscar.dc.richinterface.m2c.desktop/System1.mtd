@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AcmeModel>
+  <system name="System1">
+    <userdata key="connection-patterns">
+      <data>
+        <portConnectionRule connector="Connector" name="">
+          <association componentType="Component" portName="p" portType="Port" roleName="r" roleType="Role"/>
+          <association componentType="Component" portName="p" portType="Port" roleName="r" roleType="Role"/>
+        </portConnectionRule>
+      </data>
+    </userdata>
+    <component name="Paramedic0">
+      <userdata key="vis-information">
+        <data category="component" rotation="0.0" x="407" y="185"/>
+      </userdata>
+    </component>
+  </system>
+</AcmeModel>

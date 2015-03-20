@@ -1,0 +1,9 @@
+System System1 = {
+
+    Component Paramedic0 : Paramedic = new Paramedic extended with {
+
+        Property aName = aaa;
+
+    }
+}
+

@@ -1,0 +1,6 @@
+<p id="<c:get select="$currentParagraph/@id" />" class="<c:get select="$currentParagraph/@class" />" align="<c:get select="$currentParagraph/@align" />"<c:if test="$currentParagraph/events"> <c:include template="templates/event.jet"/></c:if>>
+<f:indent text="	" depth="1">
+<c:get select="$currentParagraph/@text" /><c:if test="$currentParagraph/*">
+<c:setVariable var="currentComponents" select="$currentParagraph/*"/>
+<c:include template="templates/components.jet"/></c:if></f:indent>
+</p>

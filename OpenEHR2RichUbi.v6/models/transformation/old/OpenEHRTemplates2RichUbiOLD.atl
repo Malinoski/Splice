@@ -1,0 +1,451 @@
+module OpenEHRTemplates2RichUbi;
+create richUbiM : richUbiMM from archM : archMM, openEHRM: openEHRMM;
+
+uses LibHelpers;
+
+----Melhorar!
+helper def: checkLabel(s: String) : Boolean = 
+	if 
+--		s='EVENT_data' 
+--		or s='EVENT_state' 
+--		or s='OBSERVATION_protocol' 
+--		or s='ARCHETYPE' 
+--		or s='EVALUATION_data' 
+--		or s='EVALUATION_protocol' 
+		s='CARCHETYPEROOT_COMPOSITION'
+		or s='CARCHETYPEROOT_OBSERVATION'
+		or s='OBSERVATION_data'
+	then true else false endif;
+--	true;
+
+helper context archMM!PropertyEHR def: getArchetype(id : String):
+	openEHRMM!ARCHETYPE = openEHRMM!ARCHETYPE.allInstances()->select(e | e.archetypeId.value = id)->first();
+
+helper context archMM!PropertyEHR def: getOperationalTemplate(id : String):
+	openEHRMM!OPERATIONALTEMPLATE = openEHRMM!OPERATIONALTEMPLATE.allInstances()->select(e | e.templateId.value = id)->first();
+
+helper def: getOntTemplateName(nodeId : String):
+	String = nodeId+'oi';
+
+--------------- Inico Regras auxiliares (called rules)
+
+rule createSpan(id: String, label: String){
+	using {
+		labelGroup : String = 'LabelGroup';
+	}
+	to divLabelGroup : richUbiMM!Div(
+			id <- id + labelGroup,		
+			inlineComponents <- spanVar,
+			class <- id + labelGroup,
+			lineBreaks <- richUbiMM!LineBreak.newInstance(),
+			lineBreaks <- richUbiMM!LineBreak.newInstance()
+		),
+		spanVar : richUbiMM!Span (
+			text <- label,
+			id <- id + 'Span',
+			class <- id + 'Span'
+		)
+	do{
+--		id.debug();
+		if (thisModule.checkLabel(id)) {--Melhorar!
+			divLabelGroup;
+		} else{
+			OclUndefined;
+		}
+	}
+}
+
+rule CreateSelectItem(item : String, archetype: openEHRMM!ARCHETYPE){ --melhorar (CreateSelectItem)!!!	
+	to
+		selectVar : richUbiMM!SelectItem(
+			 --value <- thisModule.getOntName(item,archetype),
+			 --itemLabel <- thisModule.getOntName(item,archetype)
+		)
+	do{
+		selectVar;		
+	}
+}
+
+--------------- FIM Regras auxiliares (called rules)
+
+--------------- INICIO Transformacao AcmeHealth2GUI (matched rules)
+
+abstract rule Component2Portal{ 
+-- "Abstract rule" não transforma o metadado de "from", somente a partir das regras extendidas.
+-- Assim, nao eh necessario criar "helpers" para verificacao de metadados permitidos ou nao.
+	from
+		comp: archMM!Component
+	to
+		richUbiM: richUbiMM!Portal (
+			name <- comp.refImmediateComposite().name + ' - ' + comp.name,			
+			documentsExtension <- 'html',
+			headerRegion <- hrVar,
+			navigationRegion <- nrVar,
+			footerRegion <- frVar
+		),		
+		hrVar : richUbiMM!HeaderRegion(
+			
+		),
+		nrVar: richUbiMM!NavigationRegion(
+			linkGroups <- linkGroup
+		),
+		frVar : richUbiMM!FooterRegion(
+			
+		),
+		linkGroup: richUbiMM!LinkGroup(
+			title <- comp.name
+		)	
+}
+
+--------------- FIM Transformacao AcmeHealth2GUI (matched rules)
+
+----------------- INICIO Transformacao Emergency2GUI (portal somente) (matched rules)
+
+rule Paramedic2Portal extends Component2Portal{
+	from
+		 comp: archMM!Paramedic	(comp.oclIsTypeOf(archMM!Paramedic)) 
+	to
+		richUbiM: richUbiMM!Portal(
+			contentRegion <- crVar			
+		),
+		crVar: richUbiMM!ContentRegion(
+			documents <- comp.observationForms,
+			documents <- comp.instructionViews
+		)	
+}
+
+rule Specialist2Portal extends Component2Portal{
+	from
+		comp: archMM!Specialist (comp.oclIsTypeOf(archMM!Specialist))
+	to
+		richUbiM: richUbiMM!Portal(			
+			contentRegion <- crVar			
+		),
+		crVar : richUbiMM!ContentRegion(
+			documents <- comp.observationViews,
+			documents <- comp.instructionForms
+		)
+}
+--
+----------------- FIM Transformacao Emergency2GUI (matched rules)
+--
+----------------- INICIO Transformacao Surveillance2GUI (portal somente) (matched rules)
+
+rule Collector2Portal extends Component2Portal{
+	from
+		 comp: archMM!Collector
+	to
+		richUbiM: richUbiMM!Portal(			
+			contentRegion <- crVar
+		),
+		crVar: richUbiMM!ContentRegion(
+			documents <- comp.observationForms
+		)	
+}
+
+rule Epidemiologist2Portal extends Component2Portal{
+	from
+		 comp: archMM!Epidemiologist 	
+	to
+		richUbiM: richUbiMM!Portal(			
+			contentRegion <- crVar			
+		),
+		crVar: richUbiMM!ContentRegion(
+			documents <- comp.observationViews,
+			documents <- comp.evaluationForms		
+		)		
+}
+
+----------------- FIM Transformacao Surveillance2GUI (portal somente) (matched rules)
+
+----------------- INICIO Transformacao Property2GUI
+
+abstract rule PropertyEHR2Document{
+	from 
+		guiComp: archMM!PropertyEHR
+	to
+		doc: richUbiMM!Document(
+			fileName <- guiComp.refImmediateComposite().name + guiComp.name,
+			title <- guiComp.refImmediateComposite().name + ' - ' + guiComp.name
+		),
+		divPropertyEHR: richUbiMM!Div(
+			id <- guiComp.name,
+--			blockLevelComponents <- guiComp.archetypeIds -> collect(e  | thisModule.ARCHETYPE2Div(guiComp.getArchetype(e),guiComp))		
+			blockLevelComponents <- guiComp.archetypeIds -> collect(e  | thisModule.OPERATIONALTEMPLATE2DIV(guiComp.getOperationalTemplate(e),guiComp))
+
+		)
+}
+
+rule EHRForm2Form extends PropertyEHR2Document{
+	from 
+		guiComp: archMM!EHRForm
+	to
+		doc: richUbiMM!Document(
+			forms <- formVar 
+		),
+		formVar: richUbiMM!Form(
+			name <- guiComp.name,	
+			blockLevelComponents <- divPropertyEHR		 
+		)
+}
+
+rule EHRView2View extends PropertyEHR2Document{
+	from 
+		guiComp: archMM!EHRView
+	to
+		doc: richUbiMM!Document(
+			blockLevelComponents <- divPropertyEHR 
+		)
+}
+
+--------------- Fim Transformacao Property2GUI
+
+----------------- Inicio transformacao templates
+
+lazy rule OPERATIONALTEMPLATE2DIV{
+	from o: openEHRMM!OPERATIONALTEMPLATE, guiComp: archMM!PropertyEHR 
+	to d: richUbiMM!Div(
+		id <- o.oclType().name,
+		class <- o.oclType().name,
+		blockLevelComponents <- thisModule.COBJECT2Div(o.definition, guiComp)
+	)
+}
+ 
+----------------- Fim transformacao templates
+
+------------------- Inicio Transformação OpenEHR2GUI
+--lazy rule ARCHETYPE2Div{
+--	from archetype: openEHRMM!ARCHETYPE, guiComp: archMM!PropertyEHR
+--	to d: richUbiMM!Div(
+--		id <- archetype.oclType().name + '_' + thisModule.getOntName(archetype.concept,archetype),
+--		class <- archetype.oclType().name,
+--		blockLevelComponents <- thisModule.createSpan(archetype.oclType().name,thisModule.getOntName('at0000' ,archetype)) -- archetype.concept no lugar de ''
+--		,blockLevelComponents <- thisModule.COBJECT2Div(archetype.definition, guiComp,archetype)
+--	)
+--}
+
+lazy rule COBJECT2Div{
+	from
+		co: openEHRMM!COBJECT, guiComp: archMM!PropertyEHR, archRoot: openEHRMM!CARCHETYPEROOT
+	to
+		divVar: richUbiMM!Div (		
+			id <- co.oclType().name+'_'+ co.rmTypeName-- +'---'+ co.nodeId 					
+		)	
+}
+
+lazy rule CCOMPLEXOBJECT2Div extends COBJECT2Div{
+	from
+		co: openEHRMM!CCOMPLEXOBJECT
+	to
+		divVar: richUbiMM!Div ( -- co.refImmediateComposite().refImmediateComposite().nodeId,archetype
+			--blockLevelComponents <- thisModule.getOntTemplateName(co.nodeId),
+			blockLevelComponents <- co.attributes -> collect(e | thisModule.CATTRIBUTE2Div(e,guiComp, co))		
+			-- cattribute : openEHRMM!CATTRIBUTE, guiComp: archMM!PropertyEHR, archRoot: openEHRMM!CARCHETYPEROOT
+		)
+--	do{
+--		(co.oclType()).debug();
+--	}
+}
+
+lazy rule CARCHETYPEROOT2DIV extends CCOMPLEXOBJECT2Div{ 
+	from
+		archRoot: openEHRMM!CARCHETYPEROOT
+	to
+		divVar: richUbiMM!Div (
+--			id <- archRoot.oclType().name+'_'+ archRoot.rmTypeName,
+--			class <- archRoot.oclType().name+'_'+ archRoot.rmTypeName,
+--			blockLevelComponents <- thisModule.createSpan(
+--				divVar.id, 
+--				archRoot.termDefinitions -> select(e | e.code='at0000')->first().
+--				items->select(e | e.id='text')->first().value
+--			),
+			blockLevelComponents <- archRoot.attributes -> collect(e | thisModule.CATTRIBUTE2Div(e,guiComp,archRoot))			
+		)
+--	do{--exibir na tela um debug
+--		(		divVar.id + '*'+
+--				co.termDefinitions -> select(e | e.code='at0000')->first().
+--				items->select(e | e.id='text')->first().value
+--		).debug();
+--	}
+}
+
+lazy rule CATTRIBUTE2Div{
+	from
+		cattribute : openEHRMM!CATTRIBUTE, guiComp: archMM!PropertyEHR, archRoot: openEHRMM!CARCHETYPEROOT
+	to 
+		divVar : richUbiMM!Div(			
+			--id <- cattribute.refImmediateComposite().rmTypeName + '_'  + cattribute.rmAttributeName,
+			id <- cattribute.oclType().name+'_'+ cattribute.rmAttributeName,
+			class <- cattribute.refImmediateComposite().rmTypeName + '_'  + cattribute.rmAttributeName,
+			blockLevelComponents <- thisModule.createSpan(divVar.id,cattribute.rmAttributeName)--,
+			--blockLevelComponents <- cattribute.children -> collect(e | thisModule.COBJECT2Div(e,guiComp,archRoot))			
+		)
+--	do{--exibir na tela um debug
+--		(	
+--			cattribute.refImmediateComposite().rmTypeName + '_'  + cattribute.rmAttributeName
+--		).debug();
+--	}
+	
+}
+
+--lazy rule CCOMPLEXOBJECT_DVTEXT2Form extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CCOMPLEXOBJECT, guiComp: archMM!EHRForm, archetype: openEHRMM!ARCHETYPE (co.rmTypeName='DV_TEXT') 	
+--	to
+--		divVar : richUbiMM!Div(
+--			id <- co.oclType().name+'---'+ co.rmTypeName, --melhorar!
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			fieldsets <- fieldsetVar
+--		),
+--		fieldsetVar : richUbiMM!Fieldset(
+--			legend <- thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype),
+--			controls <- textAreaVar			
+--		),
+--		textAreaVar : richUbiMM!TextArea(
+--			 value <- ''  -- valor a ser inserido pelo usuario			 
+--		)	
+--}
+
+--lazy rule CCOMPLEXOBJECT_DVTEXT2View extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CCOMPLEXOBJECT, guiComp: archMM!EHRView, archetype: openEHRMM!ARCHETYPE (co.rmTypeName='DV_TEXT') 	
+--	to
+--		divVar : richUbiMM!Div(
+--			id <- co.oclType().name+'---'+ co.rmTypeName, --melhorar!
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			inlineComponents  <- spanVar			
+--		),
+--		spanVar : richUbiMM!Span(
+--			text <-   thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype),		
+--			inlineComponents <- phraseVar_value
+--		),
+--		phraseVar_value : richUbiMM!PhraseElement(
+--			text <- 'N/A',
+--			id <- co.refImmediateComposite().refImmediateComposite().nodeId			
+--		)
+--}
+
+--lazy rule CCOMPLEXOBJECT_DV_CODED_TEXT2Form extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CCOMPLEXOBJECT, guiComp: archMM!EHRForm (co.rmTypeName='DV_CODED_TEXT') -- and co.refImmediateComposite().refImmediateComposite().oclIsTypeOf(openEHRMM!CCOMPLEXOBJECT)) 
+--	to
+--		divVar : richUbiMM!Div(
+--			id <- co.oclType().name+'---'+ co.rmTypeName, --melhorar!
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			fieldsets <- fieldsetVar
+--		),		
+--		fieldsetVar : richUbiMM!Fieldset(
+--			--legend <- thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,template),			
+--			controls <- textAreaVar
+--		),
+--		textAreaVar : richUbiMM!Select(
+--			--id <- guiComp.refImmediateComposite().name +'---'+template.templateId.value + '---' +co.refImmediateComposite().refImmediateComposite().nodeId,
+----			items <- co.attributes -> collect(e | e)->first().
+----						children   -> collect(e | e)->first().
+----						codeList   -> collect(e | thisModule.CreateSelectItem(e,template)) --melhorar (CreateSelectItem)!!!			
+--		)
+--	do{
+----		(
+----				co.refImmediateComposite().refImmediateComposite().oclIsTypeOf(openEHRMM!CCOMPLEXOBJECT)
+----		).debug();
+--	}		
+--}
+--
+--lazy rule CCOMPLEXOBJECT_DV_CODED_TEXT2View extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CCOMPLEXOBJECT, guiComp: archMM!EHRView, archetype: openEHRMM!ARCHETYPE (co.rmTypeName='DV_CODED_TEXT') 	
+--	to
+--		divVar : richUbiMM!Div(
+--			id <- co.oclType().name+'---'+ co.rmTypeName, --melhorar!
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			inlineComponents  <- spanVar			
+--		),
+--		spanVar : richUbiMM!Span(
+--			text <-   thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype),			
+--			inlineComponents <- phraseVar_value
+--		),
+--		phraseVar_value : richUbiMM!PhraseElement(
+--			text <- 'N/A',
+--			id <- co.refImmediateComposite().refImmediateComposite().nodeId			
+--		)
+--}
+--
+--lazy rule CDVQUANTITY2Div extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CDVQUANTITY, guiComp: archMM!EHRView, archetype: openEHRMM!ARCHETYPE
+--	to
+--		divVar: richUbiMM!Div (	
+--			id <- co.rmTypeName,
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			inlineComponents  <- spanVar			
+--		),
+--		spanVar : richUbiMM!Span(
+--			text <-   thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype),
+--			inlineComponents <- phraseVar_value
+--		)
+--		,
+--		phraseVar_value : richUbiMM!PhraseElement(
+--			text <- 'N/A',
+--			id <- co.refImmediateComposite().refImmediateComposite().nodeId--,
+--			--inlineComponents <- phraseVar_unit
+--		)--,
+----		phraseVar_unit : richUbiMM!PhraseElement(
+----			id <- co.refImmediateComposite().refImmediateComposite().nodeId,
+----			text <- co.list->collect(e | e) ->first().units -- default o primeiro da lista, se n, captura do banco e insere o valor referente ao id de PhraseElement 
+----		)	
+--}
+--
+--lazy rule CDVQUANTITY2Fieldset extends COBJECT2Div{
+--	from
+--		co: openEHRMM!CDVQUANTITY, guiComp: archMM!EHRForm--, archetype: openEHRMM!ARCHETYPE
+--	to
+--		divVar : richUbiMM!Div(
+--			id <- co.oclType().name+'---'+ co.rmTypeName, --melhorar!		
+--			blockLevelComponents <- thisModule.createSpan(co.rmTypeName,co.rmTypeName),
+--			fieldsets <- fieldsetVar
+--		),
+--		fieldsetVar : richUbiMM!Fieldset(
+--			--legend <- thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype),
+--			controls <- textFieldVar,
+--			controls <- selectVar			
+--		),
+--		textFieldVar : richUbiMM!TextField(
+--			 --name <- thisModule.getOntName(co.refImmediateComposite().refImmediateComposite().nodeId,archetype)
+--		),
+--		spanVar : richUbiMM!TextField(
+--			 readonly <- true			 
+--		),
+--		selectVar : richUbiMM!Select(
+--			items <- co.list -> collect(e | thisModule.CQUANTITYITEM2SelectItem(e))
+--		)
+----	do{
+----		(
+----			if(archRoot.oclIsTypeOf(openEHRMM!CARCHETYPEROOT)) 
+----			then archRoot.oclType()
+----			else
+----			'not'
+----			endif
+------			archRoot.termDefinitions 
+------				-> select(e | e.code='at0000')->first().items
+------				-> select(e | e.id='text')->first().value
+----		).debug();
+----	}
+--}
+
+
+--lazy rule CQUANTITYITEM2SelectItem{
+--	from
+--		cquantityitem : openEHRMM!CQUANTITYITEM
+--	to
+--		selectVar : richUbiMM!SelectItem(
+--			 value <- cquantityitem.units,
+--			 itemLabel <- cquantityitem.units
+--		)
+--}
+----
+--
+----
+------------------- Fim Transformação OpenEHR2GUI
+----
+------ http://www.eclipse.org/forums/index.php/mv/msg/163241/516836/
+--

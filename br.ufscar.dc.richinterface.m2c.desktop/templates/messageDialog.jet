@@ -1,0 +1,3 @@
+<div id="<c:get select="$currentMessageDialog/@id" />" class="<c:get select="$currentMessageDialog/@class" />" title="<c:get select="$currentMessageDialog/@title" />">
+	<p><c:get select="$currentMessageDialog/@message" /></p>
+</div>

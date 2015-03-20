@@ -1,0 +1,11 @@
+<dl class="demos-nav">
+	<c:iterate select="$currentNavigationRegionVertical/linkGroups" var="currentLinkGroup">
+	<dt><c:get select="$currentLinkGroup/@title" /></dt>
+		<c:iterate select="$currentLinkGroup/links" var="currentLink">
+		<dd>
+			<f:indent text="			" depth="1">
+			<c:setVariable var="currentComponent" select="$currentLink"/><c:include template="templates/link.jet"/></f:indent>
+		</dd>
+		</c:iterate>
+	</c:iterate>	
+</dl>

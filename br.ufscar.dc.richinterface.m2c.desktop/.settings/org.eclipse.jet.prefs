@@ -1,0 +1,6 @@
+#Ter Jun 15 11:37:22 BRT 2010
+eclipse.preferences.version=1
+org.eclipse.jet.compiledTemplatePackage=br.ufscar.dc.richinterface.m2c.desktop.compiled
+org.eclipse.jet.compiledTemplateSrcDir=jet2java
+org.eclipse.jet.projectPrefs=true
+org.eclipse.jet.useJava5=true

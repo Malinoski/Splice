@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ACMEHealth:ACMEFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ACMEHealth="ACMEHealth" xmlns:EpidemiologyFamily="EpidemiologyFamily">
+  <entries xsi:type="EpidemiologyFamily:EpidemiologySystem" name="UK Databank Based">
+    <collector name="Clinician">
+      <observationForms name="HeightCollectorForm">
+        <archetypeIds>openEHR-EHR-OBSERVATION.height.v1</archetypeIds>
+      </observationForms>
+      <observationForms name="WeightCollectorForm">
+        <archetypeIds>openEHR-EHR-OBSERVATION.body_weight.v1</archetypeIds>
+      </observationForms>
+    </collector>
+    <epidemiologist name="Researcher Epidemiologist">
+      <observationViews name="HeightEpidemiologistView">
+        <archetypeIds>openEHR-EHR-OBSERVATION.height.v1</archetypeIds>
+      </observationViews>
+      <observationViews name="WeightEpidemilogistView">
+        <archetypeIds>openEHR-EHR-OBSERVATION.height.v1</archetypeIds>
+      </observationViews>
+      <evaluationForms name="EpidemiologistAlertForm">
+        <archetypeIds>openEHR-EHR-EVALUATION.alert.v1</archetypeIds>
+      </evaluationForms>
+      <evaluationForms name="EpidemiologistRiskForm">
+        <archetypeIds>openEHR-EHR-EVALUATION.risk.v1</archetypeIds>
+      </evaluationForms>
+    </epidemiologist>
+  </entries>
+</ACMEHealth:ACMEFile>

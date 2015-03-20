@@ -1,0 +1,6 @@
+<span id="<c:get select="$currentSpan/@id" />" class="<c:get select="$currentSpan/@class" />" align="<c:get select="$currentSpan/@align" />"<c:if test="$currentSpan/events"> <c:include template="templates/event.jet"/></c:if>>
+<f:indent text="	" depth="1">
+<c:get select="$currentSpan/@text" /><c:if test="$currentSpan/*">
+<c:setVariable var="currentComponents" select="$currentSpan/*"/>
+<c:include template="templates/components.jet"/></c:if></f:indent>
+</span>

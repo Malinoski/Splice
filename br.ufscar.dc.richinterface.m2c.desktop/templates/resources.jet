@@ -1,0 +1,103 @@
+<%@taglib prefix="ws" id="org.eclipse.jet.workspaceTags" %>
+
+<%-- Criando a folha de estilo, que varia conforme o numero de colunas da estrutura --%>
+<ws:file template="templates/styles.jet" path="css/styles.css"/>
+
+<%-- Importando os do jQuery --%>
+<ws:copyFile src="resources/js/jquery-1.4.2.min.js" target="js/jquery-1.4.2.min.js"/>
+<ws:copyFile src="resources/js/jquery-ui-1.8.2.custom.min.js" target="js/jquery-ui-1.8.2.custom.min.js"/>
+<ws:copyFile src="resources/js/jquery.form.js" target="js/jquery.form.js"/>
+<ws:copyFile src="resources/js/external/jquery.bgiframe-2.1.1.js" target="js/external/jquery.bgiframe-2.1.1.js"/>
+<ws:copyFile src="resources/js/external/jquery.cookie.js" target="js/external/jquery.cookie.js"/>
+<ws:copyFile src="resources/js/external/jquery.metadata.js" target="js/external/jquery.metadata.js"/>
+<ws:copyFile src="resources/js/external/qunit.js" target="js/external/qunit.js"/>
+<ws:copyFile src="resources/js/external/qunit.css" target="js/external/qunit.css"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.blind.js" target="js/ui/jquery.effects.blind.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.bounce.js" target="js/ui/jquery.effects.bounce.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.clip.js" target="js/ui/jquery.effects.clip.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.core.js" target="js/ui/jquery.effects.core.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.drop.js" target="js/ui/jquery.effects.drop.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.explode.js" target="js/ui/jquery.effects.explode.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.fold.js" target="js/ui/jquery.effects.fold.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.highlight.js" target="js/ui/jquery.effects.highlight.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.pulsate.js" target="js/ui/jquery.effects.pulsate.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.scale.js" target="js/ui/jquery.effects.scale.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.shake.js" target="js/ui/jquery.effects.shake.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.slide.js" target="js/ui/jquery.effects.slide.js"/>
+<ws:copyFile src="resources/js/ui/jquery.effects.transfer.js" target="js/ui/jquery.effects.transfer.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.accordion.js" target="js/ui/jquery.ui.accordion.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.autocomplete.js" target="js/ui/jquery.ui.autocomplete.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.button.js" target="js/ui/jquery.ui.button.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.core.js" target="js/ui/jquery.ui.core.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.datepicker.js" target="js/ui/jquery.ui.datepicker.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.dialog.js" target="js/ui/jquery.ui.dialog.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.draggable.js" target="js/ui/jquery.ui.draggable.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.droppable.js" target="js/ui/jquery.ui.droppable.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.mouse.js" target="js/ui/jquery.ui.mouse.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.position.js" target="js/ui/jquery.ui.position.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.progressbar.js" target="js/ui/jquery.ui.progressbar.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.resizable.js" target="js/ui/jquery.ui.resizable.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.selectable.js" target="js/ui/jquery.ui.selectable.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.slider.js" target="js/ui/jquery.ui.slider.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.sortable.js" target="js/ui/jquery.ui.sortable.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.tabs.js" target="js/ui/jquery.ui.tabs.js"/>
+<ws:copyFile src="resources/js/ui/jquery.ui.widget.js" target="js/ui/jquery.ui.widget.js"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.accordion.css" target="css/themes/base/jquery.ui.accordion.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.all.css" target="css/themes/base/jquery.ui.all.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.autocomplete.css" target="css/themes/base/jquery.ui.autocomplete.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.base.css" target="css/themes/base/jquery.ui.base.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.button.css" target="css/themes/base/jquery.ui.button.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.core.css" target="css/themes/base/jquery.ui.core.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.datepicker.css" target="css/themes/base/jquery.ui.datepicker.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.dialog.css" target="css/themes/base/jquery.ui.dialog.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.progressbar.css" target="css/themes/base/jquery.ui.progressbar.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.resizable.css" target="css/themes/base/jquery.ui.resizable.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.selectable.css" target="css/themes/base/jquery.ui.selectable.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.slider.css" target="css/themes/base/jquery.ui.slider.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.tabs.css" target="css/themes/base/jquery.ui.tabs.css"/>
+<ws:copyFile src="resources/css/themes/base/jquery.ui.theme.css" target="css/themes/base/jquery.ui.theme.css"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-anim_basic_16x16.gif" target="css/themes/base/images/ui-anim_basic_16x16.gif" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" target="css/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" target="css/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" target="css/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" target="css/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_glass_75_dadada_1x400.png" target="css/themes/base/images/ui-bg_glass_75_dadada_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" target="css/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" target="css/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" target="css/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-icons_222222_256x240.png" target="css/themes/base/images/ui-icons_222222_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-icons_2e83ff_256x240.png" target="css/themes/base/images/ui-icons_2e83ff_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-icons_454545_256x240.png" target="css/themes/base/images/ui-icons_454545_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-icons_888888_256x240.png" target="css/themes/base/images/ui-icons_888888_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/base/images/ui-icons_cd0a0a_256x240.png" target="css/themes/base/images/ui-icons_cd0a0a_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/jquery-ui-1.8.2.custom.css" target="css/themes/cupertino/jquery-ui-1.8.2.custom.css"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-anim_basic_16x16.gif" target="css/themes/cupertino/images/ui-anim_basic_16x16.gif" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" target="css/themes/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_flat_15_cd0a0a_40x100.png" target="css/themes/cupertino/images/ui-bg_flat_15_cd0a0a_40x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" target="css/themes/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" target="css/themes/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" target="css/themes/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" target="css/themes/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" target="css/themes/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" target="css/themes/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" target="css/themes/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-icons_2694e8_256x240.png" target="css/themes/cupertino/images/ui-icons_2694e8_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-icons_2e83ff_256x240.png" target="css/themes/cupertino/images/ui-icons_2e83ff_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-icons_3d80b3_256x240.png" target="css/themes/cupertino/images/ui-icons_3d80b3_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-icons_72a7cf_256x240.png" target="css/themes/cupertino/images/ui-icons_72a7cf_256x240.png" binary="true"/>
+<ws:copyFile src="resources/css/themes/cupertino/images/ui-icons_ffffff_256x240.png" target="css/themes/cupertino/images/ui-icons_ffffff_256x240.png" binary="true"/>
+
+<c:if test="$portal/navigationRegion/@orientation = 'Horizontal'">
+<%-- Importando os demais arquivos do jQuery Superfish --%>
+<ws:copyFile src="resources/js/hoverIntent.js" target="js/jhoverIntent.js"/>
+<ws:copyFile src="resources/js/superfish.js" target="js/superfish.js"/>
+<ws:copyFile src="resources/js/supersubs.js" target="js/supersubs.js"/>
+<ws:copyFile src="resources/css/superfish.css" target="css/superfish.css"/>
+<ws:copyFile src="resources/css/superfish-navbar.css" target="css/superfish-navbar.css"/>
+<ws:copyFile src="resources/css/superfish-vertical.css" target="css/superfish-vertical.css"/>
+<ws:copyFile src="resources/images/arrows-ffffff.png" target="images/arrows-ffffff.png" binary="true"/>
+<ws:copyFile src="resources/images/shadow.png" target="images/shadow.png" binary="true"/>
+</c:if>
+
+<%-- Importando os demais arquivos JavaScript --%>
+<ws:copyFile src="resources/js/scripts.js" target="js/scripts.js"/>

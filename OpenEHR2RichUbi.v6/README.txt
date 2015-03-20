@@ -1,0 +1,1 @@
+Regras para transformar opt em richubi

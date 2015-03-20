@@ -1,0 +1,25 @@
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags"%><c:if test="$portal/@documentsExtension = 'jsp'">${'<%@'} page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"${'%>'}
+${'<%@'} taglib uri="http://java.sun.com/jsf/html" prefix="h" ${'%>'}
+${'<%@'} taglib uri="http://java.sun.com/jsf/core" prefix="f" ${'%>'}
+</c:if>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<c:if test="$portal/@documentsExtension = 'jsp'"><base href="${'<%'}=request.getRequestURL() ${'%>'}"/></c:if>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><c:get select="$currentDocument/@title" /></title>
+		<link href="css/styles.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="css/themes/base/jquery.ui.all.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
+		<f:indent text="		" depth="1">
+		<c:include template="templates/scripts.jet"/></f:indent>
+	</head>
+	<body<c:if test="$currentDocument/events"> <c:setVariable var="currentComponent" select="$currentDocument"/><c:include template="templates/event.jet"/></c:if>>
+		<f:indent text="		" depth="1">
+		<c:setVariable select="$currentDocument/*" var="currentComponents"/>
+		<c:include template="templates/components.jet"/></f:indent>
+	</body>
+</html>

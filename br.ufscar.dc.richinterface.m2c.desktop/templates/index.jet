@@ -1,0 +1,84 @@
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags"%><c:if test="$portal/@documentsExtension = 'jsp'">${'<%@'} page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"${'%>'}
+${'<%@'} taglib uri="http://java.sun.com/jsf/html" prefix="h" ${'%>'}
+${'<%@'} taglib uri="http://java.sun.com/jsf/core" prefix="f" ${'%>'}
+</c:if>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<c:if test="$portal/@documentsExtension = 'jsp'"><base href="${'<%'}=request.getRequestURL()${'%>'}"/></c:if>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><c:get select="$portal/@name"/></title>
+		<link href="css/styles.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="css/themes/base/jquery.ui.all.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+		<script type="text/javascript" src="jquery.form.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script><c:if test="$portal/navigationRegion"><c:if test="$portal/navigationRegion/@orientation = 'Horizontal'">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/superfish.css" />
+		<script type="text/javascript" src="js/hoverIntent.js"></script> 
+		<script type="text/javascript" src="js/superfish.js"></script> 
+		<script type="text/javascript"> 
+   			 $(document).ready(function(){ 
+      			$("ul.sf-menu").superfish(); 
+   			 }); 
+ 		</script></c:if></c:if><c:iterate select="$portal/contentRegion/documents" var="currentDocument"><c:if test="$currentDocument/@index = 'true'">
+ 		<f:indent text=" 		" depth="1">
+ 		
+		<c:include template="templates/scripts.jet"/></f:indent></c:if></c:iterate>
+	</head>
+	<body class="thrColHybHdr">
+		<div id="container">
+			<c:if test="$portal/headerRegion"><div id="headerRegion">
+				<c:setVariable var="currentHeaderRegion" select="$portal/headerRegion"/>
+				<f:indent text="				" depth="1">
+				<c:include template="templates/headerRegion.jet"/></f:indent>
+			</div> <!-- end #headerRegion div --></c:if><c:if test="$portal/searchRegion">
+
+			<div id="searchRegion">  
+				Search Region
+			</div> <!-- end #searchRegion div -->
+			<c:if test="$portal/navigationRegion/@orientation = 'Vertical'">
+			
+			<div id="spaceSearchRegion">
+				Space Search Region
+			</div> <!-- end #spaceSearchRegion div --></c:if></c:if>
+			
+			<c:choose select="$portal/navigationRegion/@orientation">
+			<c:when test = "'Vertical'">
+			<div id="navigationRegionVertical">
+				<c:setVariable var="currentNavigationRegionVertical" select="$portal/navigationRegion"/>
+				<f:indent text="				" depth="1"> 
+				<c:include template="templates/navigationRegionVertical.jet"/></f:indent>
+			</div> <!-- end #navigationRegionVertical div --></c:when>
+		 	<c:when test = "'Horizontal'">
+			<div id="navigationRegionHorizontal"> 
+				<c:setVariable var="currentNavigationRegionHorizontal" select="$portal/navigationRegion"/>
+				<f:indent text="				" depth="1"> 
+				<c:include template="templates/navigationRegionHorizontal.jet"/></f:indent>
+			</div> <!-- end #navigationRegionHorizontal div --></c:when>
+		 	</c:choose><c:if test="$portal/contextualNavigationRegion">
+		 	
+		 	<div id="contextualNavigationRegion">
+				Contextual Navigation Region
+			</div> <!-- end #contextualNavigationRegion div --></c:if>
+
+			<c:if test="$portal/contentRegion"><div id="contentRegion">
+				<c:iterate select="$portal/contentRegion/documents" var="currentDocument">
+				<c:if test="$currentDocument/@index = 'true'">
+				<f:indent text="				" depth="1">
+				<c:setVariable select="$currentDocument/*" var="currentComponents"/>
+				<c:include template="templates/components.jet"/></f:indent>
+				</c:if>
+				</c:iterate>
+			</div> <!-- end #contentRegion div --></c:if>
+
+			<!-- This clearing element should immediately follow the #contentRegion div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+
+			<c:if test="$portal/footerRegion"><div id="footerRegion">
+			<c:setVariable var="currentFooterRegion" select="$portal/footerRegion"/>
+			<f:indent text="				" depth="1">
+			<c:include template="templates/footerRegion.jet"/></f:indent>
+			</div> <!-- end #footerRegion div --></c:if>
+		</div> <!-- end #container div -->
+	</body>
+</html>

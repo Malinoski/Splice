@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ACMEHealth:ACMEFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ACMEGUI="ACMEGUI" xmlns:ACMEHealth="ACMEHealth" xmlns:SurveillanceFamily="SurveillanceFamily">
+  <entries xsi:type="SurveillanceFamily:SurveillanceSystem" name="Epidemiology System">
+    <dataCollection name="Departamento_De_Saude">
+      <ehrForms xsi:type="ACMEGUI:EHRObservationForm" name="bodyWeightForm">
+        <archetypeIds>openEHR-EHR-OBSERVATION.body_weight.v1</archetypeIds>
+      </ehrForms>
+      <ehrForms xsi:type="ACMEGUI:EHRObservationForm" name="heightForm">
+        <archetypeIds>openEHR-EHR-OBSERVATION.height.v1</archetypeIds>
+      </ehrForms>
+      <ehrForms xsi:type="ACMEGUI:EHRInstructionForm" name="ALERT">
+        <archetypeIds>openEHR-EHR-EVALUATION.alert.v1</archetypeIds>
+      </ehrForms>
+      <ehrForms xsi:type="ACMEGUI:EHREvaluationForm" name="RISK">
+        <archetypeIds>openEHR-EHR-EVALUATION.risk.v1</archetypeIds>
+      </ehrForms>
+      <ehrForms xsi:type="ACMEGUI:EHRObservationForm" name="examForm">
+        <archetypeIds>openEHR-EHR-OBSERVATION.exam.v1</archetypeIds>
+      </ehrForms>
+    </dataCollection>
+    <dataCollection/>
+    <staticDataVisualization name="Enfermeira">
+      <ehrViews xsi:type="ACMEGUI:EHRObservationView" name="view01">
+        <archetypeIds>openEHR-EHR-OBSERVATION.blood_pressure.v1</archetypeIds>
+        <archetypeIds>openEHR-EHR-OBSERVATION.body_weight.v1</archetypeIds>
+      </ehrViews>
+      <ehrViews xsi:type="ACMEGUI:EHRInstructionView" name="view02">
+        <archetypeIds>openEHR-EHR-INSTRUCTION.medication.v1</archetypeIds>
+      </ehrViews>
+    </staticDataVisualization>
+    <interactiveDataVisualization name="Epidemiologista">
+      <ehrViews xsi:type="ACMEGUI:EHRObservationView" name="view03">
+        <archetypeIds>openEHR-EHR-OBSERVATION.body_weight.v1</archetypeIds>
+      </ehrViews>
+      <instructionForms name="form03">
+        <archetypeIds>openEHR-EHR-INSTRUCTION.medication.v1</archetypeIds>
+      </instructionForms>
+    </interactiveDataVisualization>
+    <dataAnalysis/>
+  </entries>
+</ACMEHealth:ACMEFile>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:ACMEHealth="ACMEHealth" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="ACMEHealth">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:complexType name="ACMEFile">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="entries" type="ACMEHealth:ACMEEntry"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="ACMEFile" type="ACMEHealth:ACMEFile"/>
+  <xsd:complexType abstract="true" name="ACMEEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="ACMEEntry" type="ACMEHealth:ACMEEntry"/>
+  <xsd:complexType abstract="true" name="Element">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="representations" type="ACMEHealth:Representation"/>
+      <xsd:element name="property" type="ACMEHealth:Property"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="Element" type="ACMEHealth:Element"/>
+  <xsd:complexType name="Type">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Type" type="ACMEHealth:Type"/>
+  <xsd:complexType name="System">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="componentDeclaration" type="ACMEHealth:ComponentInstance"/>
+          <xsd:element name="connectorDeclaration" type="ACMEHealth:Connector"/>
+          <xsd:element name="attachments" type="ACMEHealth:Link"/>
+          <xsd:element name="bindings" type="ACMEHealth:Link"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="System" type="ACMEHealth:System"/>
+  <xsd:complexType name="Representation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="systems" type="ACMEHealth:System"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Representation" type="ACMEHealth:Representation"/>
+  <xsd:complexType abstract="true" name="Component">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="ports" type="ACMEHealth:Port"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Component" type="ACMEHealth:Component"/>
+  <xsd:complexType name="ComponentInstance">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Component">
+        <xsd:attribute name="instanceOf" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComponentInstance" type="ACMEHealth:ComponentInstance"/>
+  <xsd:complexType name="ComponentType">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Component">
+        <xsd:attribute name="extend" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComponentType" type="ACMEHealth:ComponentType"/>
+  <xsd:complexType name="Port">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Port" type="ACMEHealth:Port"/>
+  <xsd:complexType name="Connector">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="roles" type="ACMEHealth:Role"/>
+          <xsd:element name="system" type="ACMEHealth:System"/>
+        </xsd:choice>
+        <xsd:attribute name="system" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Connector" type="ACMEHealth:Connector"/>
+  <xsd:complexType name="Role">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Element"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Role" type="ACMEHealth:Role"/>
+  <xsd:complexType name="Property">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="val" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="Property" type="ACMEHealth:Property"/>
+  <xsd:complexType abstract="true" name="Link">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="systemBinding" type="ACMEHealth:System"/>
+      <xsd:element name="systemAttachment" type="ACMEHealth:System"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="systemBinding" type="xsd:string"/>
+    <xsd:attribute name="systemAttachment" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Link" type="ACMEHealth:Link"/>
+  <xsd:complexType name="Attachment">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Link">
+        <xsd:attribute name="comp" type="xsd:string" use="required"/>
+        <xsd:attribute name="port" type="xsd:string" use="required"/>
+        <xsd:attribute name="con" type="xsd:string" use="required"/>
+        <xsd:attribute name="role" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Attachment" type="ACMEHealth:Attachment"/>
+  <xsd:complexType name="Binding">
+    <xsd:complexContent>
+      <xsd:extension base="ACMEHealth:Link">
+        <xsd:attribute name="compSrc" type="xsd:string" use="required"/>
+        <xsd:attribute name="portSrc" type="xsd:string" use="required"/>
+        <xsd:attribute name="compDest" type="xsd:string" use="required"/>
+        <xsd:attribute name="portDest" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Binding" type="ACMEHealth:Binding"/>
+</xsd:schema>

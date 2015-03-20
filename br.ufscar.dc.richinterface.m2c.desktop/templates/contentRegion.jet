@@ -1,0 +1,4 @@
+<%@taglib prefix="ws" id="org.eclipse.jet.workspaceTags" %>
+<c:iterate select="$portal/contentRegion/documents" var="currentDocument">
+	<ws:file template="templates/document.jet" path="{removeWhitespace($currentDocument/@fileName)}.{$portal/@documentsExtension}" encoding="UTF-16"/>
+</c:iterate>

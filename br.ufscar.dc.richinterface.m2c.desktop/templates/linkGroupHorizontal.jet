@@ -1,0 +1,21 @@
+<li class="current">
+	<a href="#"><c:get select="$currentLinkGroup/@title" /></a><c:if test="$currentLinkGroup/*">
+	<ul>
+		<c:iterate select="$currentLinkGroup/*" var="currentLinkGroupElement">
+		<c:choose select="$currentLinkGroupElement">
+		<c:when test="self::Link">
+		<c:setVariable var="currentLink" select="$currentLinkGroupElement"/>
+		<li>
+		<f:indent text="			" depth="1">
+		<c:setVariable var="currentComponent" select="$currentLink"/>
+		<c:include template="templates/link.jet"/></f:indent>
+		</li>
+		</c:when>
+		<c:when test="self::LinkGroup">
+<f:indent text="		" depth="1"><c:setVariable var="currentLinkGroup" select="$currentLinkGroupElement"/>
+		<c:include template="templates/linkGroupHorizontal.jet"/></f:indent>
+		</c:when>
+		</c:choose>
+		</c:iterate>
+	</ul></c:if>
+</li>

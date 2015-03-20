@@ -1,0 +1,14 @@
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags"%>
+<c:if test="$currentHeaderRegion/logo/image">
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+	<tr>
+		<th scope="col">
+		<f:indent text="	" depth="1"><c:setVariable var="currentImage" select="$currentHeaderRegion/logo/image"/><c:setVariable var="currentComponent" select="$currentImage"/><c:include template="templates/image.jet"/></f:indent>
+		</th>
+		<th scope="col" width="100%" align="left"><c:setVariable var="currentComponents" select="$currentHeaderRegion/*"/><f:indent text="			" depth="1"><c:include template="templates/components.jet"/></f:indent>	
+		</th>
+	</tr>
+</table></c:if><c:if test="not($currentHeaderRegion/logo)">
+<c:setVariable var="currentComponents" select="$currentHeaderRegion/*"/>
+<c:include template="templates/components.jet"/>
+</c:if>

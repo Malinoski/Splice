@@ -1,0 +1,14 @@
+<div id="<c:get select="$currentTabbedPanel/@id" />" class="<c:get select="$currentTabbedPanel/@class" />">
+	<ul>
+		<c:iterate select="$currentTabbedPanel/tabs" var="currentTab">
+		<li><a href="#<c:replaceStrings replace=" " with="-"><c:get select="lower-case($currentTabbedPanel/@id)" />-<c:get select="lower-case($currentTab/@title)" /></c:replaceStrings>"><c:get select="$currentTab/@title"/></a></li>
+		</c:iterate>
+	</ul>
+	<c:iterate select="$currentTabbedPanel/tabs" var="currentTab">
+	<div id="<c:replaceStrings replace=" " with="-"><c:get select="lower-case($currentTabbedPanel/@id)" />-<c:get select="lower-case($currentTab/@title)" /></c:replaceStrings>"><c:if test="$currentTab/*">
+		<f:indent text="		" depth="1">
+		<c:setVariable var="currentComponents" select="$currentTab/*"/>
+		<c:include template="templates/components.jet"/></f:indent></c:if>
+	</div>
+	</c:iterate>
+</div>
