@@ -36,7 +36,7 @@ The code provided herein offers support for generating HIS skeletons for emergen
 ## Pre-requisites
 
 Currently, the SPLiCE system is offered as a set of standalone components and models that must be "weaved together" manually to generate the intended HIS prototypes. 
-Nevertheless, these components and models are all provided within a single integrated development environment (IDE) provided by the Eclipse platform, which may alleviate the inconvenients of manuall user intervention. 
+Nevertheless, these components and models are all provided within a single integrated development environment (IDE) provided by the Eclipse platform (https://eclipse.org/downloads/packages/eclipse-modeling-tools/), which may alleviate the inconvenients of manual user intervention. 
 The needed Eclipse plugins that allow SPLiCE components and models to work are the following:
 
 1.	Java Emitter Template (JET) SDK (Modeling Component)
@@ -44,5 +44,6 @@ The needed Eclipse plugins that allow SPLiCE components and models to work are t
 3.	Eclipse XSL Developer Tools (Software)
 4.	EGit (Marketplace). This component is needed for importing the SPLiCE components and models from this repository
 
+Enjoy!
 
 
