@@ -46,4 +46,8 @@ The needed Eclipse plugins that allow SPLiCE components and models to work are t
 
 Enjoy!
 
+## Acknowledgements
 
+This work was partially supported by the Brazilian Funding Agencies FAPERJ, CNPq, and by the Brazilian Ministry of Science, Technology and Innovation (MCTI). 
+The authors are with the National Laboratory for Scientific Computing (LNCC - http://www.lncc.br). 
+A. T. A. Gomes and A. Ziviani, the key architects of the SPLiCE system, are also with the National Institute of Science and Technology for Medicine Assisted by Scientific Computing (INCT-MACC - http://macc.lncc.br).
