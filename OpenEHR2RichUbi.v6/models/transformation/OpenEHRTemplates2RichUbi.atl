@@ -1,3 +1,5 @@
+--- Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved. Read file LICENSE.txt for conditions on the use of this software.
+--- Author: malinoski.iuri@gmail.com 
 module OpenEHR2RichUbiTemplates;
 create richUbiM : richUbiMM from archM : archMM, openEHRM : openEHRMM;
 

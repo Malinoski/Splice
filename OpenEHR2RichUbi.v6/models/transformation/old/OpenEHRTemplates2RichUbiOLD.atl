@@ -1,3 +1,5 @@
+--- Copyright Â© 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved. Read file LICENSE.txt for conditions on the use of this software.
+--- Author: malinoski.iuri@gmail.com
 module OpenEHRTemplates2RichUbi;
 create richUbiM : richUbiMM from archM : archMM, openEHRM: openEHRMM;
 
@@ -71,7 +73,7 @@ rule CreateSelectItem(item : String, archetype: openEHRMM!ARCHETYPE){ --melhorar
 --------------- INICIO Transformacao AcmeHealth2GUI (matched rules)
 
 abstract rule Component2Portal{ 
--- "Abstract rule" não transforma o metadado de "from", somente a partir das regras extendidas.
+-- "Abstract rule" nï¿½o transforma o metadado de "from", somente a partir das regras extendidas.
 -- Assim, nao eh necessario criar "helpers" para verificacao de metadados permitidos ou nao.
 	from
 		comp: archMM!Component
@@ -213,7 +215,7 @@ lazy rule OPERATIONALTEMPLATE2DIV{
  
 ----------------- Fim transformacao templates
 
-------------------- Inicio Transformação OpenEHR2GUI
+------------------- Inicio Transformaï¿½ï¿½o OpenEHR2GUI
 --lazy rule ARCHETYPE2Div{
 --	from archetype: openEHRMM!ARCHETYPE, guiComp: archMM!PropertyEHR
 --	to d: richUbiMM!Div(
@@ -445,7 +447,7 @@ lazy rule CATTRIBUTE2Div{
 ----
 --
 ----
-------------------- Fim Transformação OpenEHR2GUI
+------------------- Fim Transformaï¿½ï¿½o OpenEHR2GUI
 ----
 ------ http://www.eclipse.org/forums/index.php/mv/msg/163241/516836/
 --
