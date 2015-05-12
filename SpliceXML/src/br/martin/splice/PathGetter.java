@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
+ * Read file LICENSE.txt for conditions on the use of this software.
+ *******************************************************************************/
 package br.martin.splice;
 
 import java.io.File;
