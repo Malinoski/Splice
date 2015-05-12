@@ -2,8 +2,8 @@ Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
 Read file LICENSE.txt for conditions on the use of this software.
 
 OpenEHR2RichUbi.v6 system was modified from https://github.com/Malinoski/IMT.
-The modification consists the the use of openEHR operational templates (opt).
-The OpenEHR2RichUbi.v6 system uses acme [1], richinterface [2] and openEHR [3] and ware modified for SPLiCE purpose.
+The modification consists the use of openEHR operational templates (opt).
+The OpenEHR2RichUbi.v6 system uses acme [1], richinterface [2] and openEHR [3] and were modified for SPLiCE purpose.
 
 [1] BAUDRY, J. ACME 1.2 ZooFederation. 2006. Available at:
 www.emn.fr/z-info/atlanmod/index.php/ZooFederation#ACME_1.2
