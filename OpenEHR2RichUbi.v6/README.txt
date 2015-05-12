@@ -1,5 +1,7 @@
-Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
-Read file LICENSE.txt for conditions on the use of this software.
+/*******************************************************************************
+ * Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
+ * Read file LICENSE.txt for conditions on the use of this software.
+ *******************************************************************************/
 
 OpenEHR2RichUbi.v6 system was modified from https://github.com/Malinoski/IMT.
 The modification consists the use of openEHR operational templates (opt).
