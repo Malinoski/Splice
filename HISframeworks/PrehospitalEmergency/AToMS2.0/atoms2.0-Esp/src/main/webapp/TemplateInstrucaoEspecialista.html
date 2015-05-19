@@ -1,0 +1,169 @@
+<!-- 
+ Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
+ Read file LICENSE.txt for conditions on the use of this software.
+--> 
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="pt" lang="pt" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TemplateInstrucaoEspecialista</title>
+        <meta http-equiv="Content-Language" content="pt" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/clickabletree.css" />
+        <script type="text/javascript">
+            <!--
+              function toggleList(id)
+            {
+                elem = document.getElementById(id);
+                elem.style.display == 'none' ? elem.style.display = 'block' : elem.style.display = 'none';
+            }
+            function toggleExpandAll(topId)
+            {
+                var elem = document.getElementById(topId + "_ExpandAll")
+                elem.innerHTML == "Expand All" ? elem.innerHTML = "Collapse All" : elem.innerHTML = "Expand All"
+                var topelem = document.getElementById(topId + "_treeRoot")
+                var elems = topelem.getElementsByTagName("div")
+                for (i = 0; i <= elems.length - 1; i++)
+                {
+                    if (elems[i].className == "expandable")
+                    {
+                        //   elems[i].style.display == "none" ? elems[i].style.display = "block" : elems[i].style.display = "none"
+                        // We changed it already
+                        elem.innerHTML == "Collapse All" ? elems[i].style.display = "block" : elems[i].style.display = "none"
+                    }
+                }
+            }
+            function toggleAnnotations(topId)
+            {
+                var elem = document.getElementById(topId + "_annotationCommand")
+                elem.innerHTML == "Show Annotations" ? elem.innerHTML = "Hide Annotations" : elem.innerHTML = "Show Annotations"
+                var topelem = document.getElementById(topId + "_treeRoot")
+                var elems = topelem.getElementsByTagName("div")
+                for (i = 0; i <= elems.length - 1; i++)
+                {
+                    if (elems[i].className == "annotation")
+                    {
+                        //We changed the elem already
+                        elem.innerHTML == "Hide Annotations" ? elems[i].style.display = "block" : elems[i].style.display = "none";
+                    }
+                }
+            }
+  -->
+             
+        </script>
+    </head>
+    <body class="clickabletree">
+        <div id="_top">
+            <h1 class="clickabletree bordered-title">TemplateInstrucaoEspecialista</h1>
+            <div id="information">
+                <h2 class="clickabletree">Purpose</h2>
+                <p class="clickabletree" id="purpose"><img src="pics/menu/information.png" alt="information" />Not Specified</p>
+            </div>
+        </div>
+        <div class="description">
+            <table class="section">
+                <tr>
+                    <td class="clickabletree sectionHead">Archetype ID</td>
+                    <td class="clickabletree sectionBody">openEHR-EHR-COMPOSITION.instrucaoespecialista.v1</td>
+                </tr>
+                <tr>
+                    <td class="clickabletree sectionHead">Template ID</td>
+                    <td class="clickabletree sectionBody">67f9a881-5113-43b2-9e79-272df77cf4f7</td>
+                </tr>
+                <tr>
+                    <td class="clickabletree sectionHead">MetaDataSet:Sample Set </td>
+                    <td class="clickabletree sectionBody">Template metadata sample set </td>
+                </tr>
+            </table>
+        </div>
+        <div class="treeRoot" id="_treeRoot">
+            <h1 class="clickabletree"><img class="image" src="pics/archetypes/small/composition.png" align="middle" alt="COMPOSITION" />Instrucaoespecialista</h1>
+            <a id="_ExpandAll" class="clickabletree ExpandAllLink" href="javascript:toggleExpandAll('')">Collapse All</a>   
+            <a id="_annotationCommand" class="clickabletree" href="javascript:toggleAnnotations('')">Show Annotations</a>
+            <div style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.15cm; padding-bottom:0.25cm;  display:block; ">
+                <div id="context_node" style="margin-left:0.5cm;">
+                    <p class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1')">[+/-]</a><span>other_context [1]</span></p>
+                    <div id="s_1" class="expandable" style="display:block; margin-left:0.5cm;" />
+                    <!--1-->
+                </div>
+                <div style="margin-left:0.05cm;" id="root1">
+                    <h3 class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.1')">[+/-]</a><img class="image" src="pics/archetypes/small/instruction.png" align="middle" alt="INSTRUCTION" /><span title="Details of a medicine, vaccine or other therapeutic good with instructions for use.">Medication order
+                            <font color="#C0C0C0"> [0..*] 
+                            </font></span>
+                    </h3>
+                    <div id="s_1.1" class="expandable" style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.25cm; padding-bottom:0.25cm;  display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                        <p class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.1.1')">[+/-]</a><img class="image" src="pics/archetypes/datatypes/small/activity.png" align="middle" alt="ACTIVITY" /><span title="The instructions for a particular medicine, vaccine or other therapeutic good including dose and timing.">Order
+                                <font color="#C0C0C0">
+                                </font></span>
+                        </p>
+                        <div id="s_1.1.1" class="expandable" style=" display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                            <p class="clickabletree"><img src="pics/archetypes/datatypes/small/timing.png" align="middle" height="16" width="16" alt="Instruction timing" /><span title="instruction.timing">Instruction timing [1]</span></p>
+                            <p class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.1.1.1')">[+/-]</a><span title="@ internal @">description [1]
+                                </span>
+                            </p>
+                            <div id="s_1.1.1.1" class="expandable" style=" display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                                <p class="clickabletree"><img class="image" src="pics/archetypes/datatypes/small/text.png" align="middle" alt="ELEMENT" /><span title="A complete narrative description of how much, when and how to use the medicine, vaccine or other therapeutic good.">Overall directions
+                                        <font color="#C0C0C0">
+                                        </font>  <textarea rows="1" cols="15" style="vertical-align: top;" name="/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001]/description[at0002]/items[at0009]/value"> texto1</textarea></span>
+                                </p>
+                                <p class="clickabletree"><img class="image" src="pics/archetypes/datatypes/small/text.png" align="middle" alt="ELEMENT" /><span title="A reason for ordering the medicine, vaccine or other therapeutic good.">Clinical indication
+                                        <font color="#C0C0C0"> [0..*] 
+                                        </font>  <textarea rows="1" cols="15" style="vertical-align: top;" name="/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001]/description[at0002]/items[at0018]/value"> texto2</textarea></span>
+                                </p>
+                                <p class="clickabletree"><img class="image" src="pics/archetypes/datatypes/small/text.png" align="middle" alt="ELEMENT" /><span title="Any additional information that may be needed to ensure the continuity of supply, rationale for current dose and timing, or safe and appropriate use.">Comment
+                                        <font color="#C0C0C0"> [0..*] 
+                                        </font>  <textarea rows="1" cols="15" style="vertical-align: top;" name="/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001]/description[at0002]/items[at0035]/value"> texto3</textarea></span>
+                                </p>
+                                <!--keeps this div not empty-->
+                            </div>
+                            <!--s1.1.1.1--><!--keeps this div not empty-->
+                        </div>
+                        <!--s1.1.1-->
+                        <div id="s_1.1.1.1" class="expandable" style=" display:block; ">
+                            <!--keeps this div not empty-->
+                        </div>
+                        <!--s1.1.1.1--><!--keeps this div not empty-->
+                    </div>
+                    <!--s1.1-->
+                </div>
+                <div style="margin-left:0.05cm;" id="root2">
+                    <h3 class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.2')">[+/-]</a><img class="image" src="pics/archetypes/small/instruction.png" align="middle" alt="INSTRUCTION" /><span title="Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">Healthcare service request
+                            <font color="#C0C0C0"> [0..*] 
+                            </font></span>
+                    </h3>
+                    <div id="s_1.2" class="expandable" style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.25cm; padding-bottom:0.25cm;  display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                        <p class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.2.1')">[+/-]</a><img class="image" src="pics/archetypes/datatypes/small/activity.png" align="middle" alt="ACTIVITY" /><span title="Current Activity.">Request
+                                <font color="#C0C0C0"> [1..*] 
+                                </font></span>
+                        </p>
+                        <div id="s_1.2.1" class="expandable" style=" display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                            <p class="clickabletree"><img src="pics/archetypes/datatypes/small/timing.png" align="middle" height="16" width="16" alt="Instruction timing" /><span title="instruction.timing">Instruction timing [1]</span></p>
+                            <p class="clickabletree"><a class="clickabletree" href="javascript:toggleList('s_1.2.1.1')">[+/-]</a><span title="@ internal @">description [1]
+                                </span>
+                            </p>
+                            <div id="s_1.2.1.1" class="expandable" style=" display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                                <p class="clickabletree"><img class="image" src="pics/archetypes/datatypes/small/text.png" align="middle" alt="ELEMENT" /><span title="Identification of the service requested. This is often coded with an external terminology.">Service requested
+                                        <font color="#C0C0C0"> [1] 
+                                        </font>  <textarea rows="1" cols="15" style="vertical-align: top;" name="/content[openEHR-EHR-INSTRUCTION.request.v1]/activities[at0001]/description[at0009]/items[at0121]/value"> texto4</textarea></span>
+                                </p>
+                                <p class="clickabletree"><img class="image" src="pics/archetypes/datatypes/small/text.png" align="middle" alt="ELEMENT" /><span title="A detailed narrative description of the service requested.">Description of service
+                                        <font color="#C0C0C0">
+                                        </font>  <textarea rows="1" cols="15" style="vertical-align: top;" name="/content[openEHR-EHR-INSTRUCTION.request.v1]/activities[at0001]/description[at0009]/items[at0135]/value"> texto5</textarea></span>
+                                </p>
+                                <!--keeps this div not empty-->
+                            </div>
+                            <!--s1.2.1.1--><!--keeps this div not empty-->
+                        </div>
+                        <!--s1.2.1-->
+                        <div id="s_1.2.1.1" class="expandable" style=" display:block; ">
+                            <!--keeps this div not empty-->
+                        </div>
+                        <!--s1.2.1.1--><!--keeps this div not empty-->
+                    </div>
+                    <!--s1.2-->
+                </div>
+                <!--keeps this div not empty-->
+            </div>
+        </div>
+    </body>
+</html>
+<!--HTML automatically generated by Operational Template To HTML Tree transform v1.2 (26 March 2010).-->

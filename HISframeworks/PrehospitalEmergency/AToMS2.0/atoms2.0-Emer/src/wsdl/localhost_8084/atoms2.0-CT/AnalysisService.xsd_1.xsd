@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.ct.martin.lncc.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.ct.martin.lncc.org/">
+
+<xs:element name="finishAnalysis" type="tns:finishAnalysis"/>
+
+<xs:element name="finishAnalysisResponse" type="tns:finishAnalysisResponse"/>
+
+<xs:element name="getAllAnalysisRequestPending" type="tns:getAllAnalysisRequestPending"/>
+
+<xs:element name="getAllAnalysisRequestPendingResponse" type="tns:getAllAnalysisRequestPendingResponse"/>
+
+<xs:element name="getAnalysisRequest" type="tns:getAnalysisRequest"/>
+
+<xs:element name="getAnalysisRequestResponse" type="tns:getAnalysisRequestResponse"/>
+
+<xs:element name="getAnalysisResponse" type="tns:getAnalysisResponse"/>
+
+<xs:element name="getAnalysisResponseResponse" type="tns:getAnalysisResponseResponse"/>
+
+<xs:element name="getEcgList" type="tns:getEcgList"/>
+
+<xs:element name="getEcgListResponse" type="tns:getEcgListResponse"/>
+
+<xs:element name="getMultimedia" type="tns:getMultimedia"/>
+
+<xs:element name="getMultimediaResponse" type="tns:getMultimediaResponse"/>
+
+<xs:element name="getXMLAnalysisResponse" type="tns:getXMLAnalysisResponse"/>
+
+<xs:element name="getXMLAnalysisResponseResponse" type="tns:getXMLAnalysisResponseResponse"/>
+
+<xs:element name="searchAnalysisResponse" type="tns:searchAnalysisResponse"/>
+
+<xs:element name="searchAnalysisResponseResponse" type="tns:searchAnalysisResponseResponse"/>
+
+<xs:element name="sendAnalysisRequest" type="tns:sendAnalysisRequest"/>
+
+<xs:element name="sendAnalysisRequestResponse" type="tns:sendAnalysisRequestResponse"/>
+
+<xs:element name="sendAnalysisResponse" type="tns:sendAnalysisResponse"/>
+
+<xs:element name="sendAnalysisResponseResponse" type="tns:sendAnalysisResponseResponse"/>
+
+<xs:complexType name="sendAnalysisRequest">
+<xs:sequence>
+<xs:element name="analysisRequest" type="tns:analysisModel" minOccurs="0"/>
+<xs:element name="multimediaMap" type="tns:multiMedia" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="analysisModel">
+<xs:sequence>
+<xs:element name="dataCadastro" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="idEmergencista" type="xs:long"/>
+<xs:element name="idEspecialista" type="xs:long"/>
+<xs:element name="instruction" type="tns:clinicalFileModel" minOccurs="0"/>
+<xs:element name="observation" type="tns:clinicalFileModel" minOccurs="0"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="clinicalFileModel">
+<xs:sequence>
+<xs:element name="fileContent" type="xs:string" minOccurs="0"/>
+<xs:element name="fileName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="multiMedia">
+<xs:sequence>
+<xs:element name="bytes" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="path" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendAnalysisRequestResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllAnalysisRequestPending">
+<xs:sequence>
+<xs:element name="idArea" type="xs:long"/>
+<xs:element name="idUser" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllAnalysisRequestPendingResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:analysisModel" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="finishAnalysis">
+<xs:sequence>
+<xs:element name="analysisId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="finishAnalysisResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAnalysisResponse">
+<xs:sequence>
+<xs:element name="analysisId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAnalysisResponseResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:analysisModel" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchAnalysisResponse">
+<xs:sequence>
+<xs:element name="idAnalysis" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchAnalysisResponseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendAnalysisResponse">
+<xs:sequence>
+<xs:element name="idAnalysis" type="xs:long"/>
+<xs:element name="xml" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendAnalysisResponseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEcgList">
+<xs:sequence>
+<xs:element name="analysisId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEcgListResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:base64Binary" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getXMLAnalysisResponse">
+<xs:sequence>
+<xs:element name="idAnalysis" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getXMLAnalysisResponseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAnalysisRequest">
+<xs:sequence>
+<xs:element name="analysisId" type="xs:long"/>
+<xs:element name="specialistId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAnalysisRequestResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:analysisModel" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMultimedia">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMultimediaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

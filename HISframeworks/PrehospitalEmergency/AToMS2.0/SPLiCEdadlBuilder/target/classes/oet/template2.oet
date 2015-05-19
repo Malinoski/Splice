@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="openEHR/v1/Template">
+  <id>fad4cca4-1b01-43f2-b648-cc0f6c61519d</id>
+  <name>template2</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose />
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="COMPOSITION" archetype_id="openEHR-EHR-COMPOSITION.testecomp.v1" concept_name="Testecomp">
+    <Content xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.blood_pressure.v1" concept_name="Pressão Arterial" path="/content[at0002]">
+      <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at0004]" min="1" />
+      <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at0005]" min="1" />
+      <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at1006]" max="0" />
+      <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at1007]" min="1" />
+      <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at0033]" max="0" />
+      <Rule path="/data[at0001]/events[at0006]/state[at0007]" hide_on_form="true" />
+      <Rule path="/data[at0001]/events[at0006]/state[at0007]/items[at0008]" max="0" />
+      <Rule path="/data[at0001]/events[at0006]/state[at0007]/items[at1052]" max="0" />
+      <Rule path="/data[at0001]/events[at0006]/state[at0007]/items[at1043]" max="0" />
+      <Rule path="/data[at0001]/events[at0006]/state[at0007]/items[at1005]" max="0" />
+      <Rule path="/data[at0001]/events[at1042]" max="0" />
+      <Rule path="/protocol[at0011]/items[at0013]" max="0" />
+      <Rule path="/protocol[at0011]/items[at1033]" max="0" />
+      <Rule path="/protocol[at0011]/items[at1035]" max="0" />
+      <Rule path="/protocol[at0011]/items[at1038]" max="0" />
+      <Rule path="/protocol[at0011]/items[at1010]" max="0" />
+    </Content>
+    <Content xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.respiration.v1" concept_name="Respirações" path="/content[at0002]">
+      <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0004]" min="1" />
+      <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0005]" max="0" />
+      <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0016]" max="0" />
+      <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0024]" max="0" />
+      <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0009]" max="0" />
+      <Rule path="/data[at0001]/events[at0002]/state[at0022]/items[at0056]" max="0" />
+    </Content>
+    <Context />
+  </definition>
+</template>

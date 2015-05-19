@@ -1,0 +1,208 @@
+<!-- 
+Copyright © 2011-2015, MARTIN Development Group / LNCC. All Rights Reserved.
+Read file LICENSE.txt for conditions on the use of this software.
+--> 
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="pt" lang="pt" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>IuriTemplate</title>
+        <meta http-equiv="Content-Language" content="pt" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/clickabletree.css" />
+        <script type="text/javascript">
+            <!--
+              function toggleList(id)
+            {
+                elem = document.getElementById(id);
+                elem.style.display == 'none' ? elem.style.display = 'block' : elem.style.display = 'none';
+            }
+            function toggleExpandAll(topId)
+            {
+                var elem = document.getElementById(topId + "_ExpandAll")
+                elem.innerHTML == "Expand All" ? elem.innerHTML = "Collapse All" : elem.innerHTML = "Expand All"
+                var topelem = document.getElementById(topId + "_treeRoot")
+                var elems = topelem.getElementsByTagName("div")
+                for (i = 0; i <= elems.length - 1; i++)
+                {
+                    if (elems[i].className == "expandable")
+                    {
+                        //   elems[i].style.display == "none" ? elems[i].style.display = "block" : elems[i].style.display = "none"
+                        // We changed it already
+                        elem.innerHTML == "Collapse All" ? elems[i].style.display = "block" : elems[i].style.display = "none"
+                    }
+                }
+            }
+            function toggleAnnotations(topId)
+            {
+                var elem = document.getElementById(topId + "_annotationCommand")
+                elem.innerHTML == "Show Annotations" ? elem.innerHTML = "Hide Annotations" : elem.innerHTML = "Show Annotations"
+                var topelem = document.getElementById(topId + "_treeRoot")
+                var elems = topelem.getElementsByTagName("div")
+                for (i = 0; i <= elems.length - 1; i++)
+                {
+                    if (elems[i].className == "annotation")
+                    {
+                        //We changed the elem already
+                        elem.innerHTML == "Hide Annotations" ? elems[i].style.display = "block" : elems[i].style.display = "none";
+                    }
+                }
+            }
+  -->
+        </script>
+    </head>
+    <body class="clickabletree">
+        <div id="_top">
+            <h1 class="clickabletree bordered-title">IuriTemplate</h1>
+            <div id="information">
+                <h2 class="clickabletree">Purpose</h2>
+                <p class="clickabletree" id="purpose"><img src="pics/menu/information.png" alt="information" />Not Specified</p>
+            </div>
+        </div>
+        <div class="description">
+            <table class="section">
+                <tr>
+                    <td class="clickabletree sectionHead">Archetype ID</td>
+                    <td class="clickabletree sectionBody">openEHR-EHR-COMPOSITION.encounter.v1</td>
+                </tr>
+                <tr>
+                    <td class="clickabletree sectionHead">Template ID</td>
+                    <td class="clickabletree sectionBody">c5df5cbc-9fea-4367-966a-c9e29119b1ef</td>
+                </tr>
+                <tr>
+                    <td class="clickabletree sectionHead">MetaDataSet:Sample Set </td>
+                    <td class="clickabletree sectionBody">Template metadata sample set </td>
+                </tr>
+            </table>
+        </div>
+        <div class="treeRoot" id="_treeRoot">
+            <h1 class="clickabletree"><img class="image" src="pics/archetypes/small/composition.png" align="middle" alt="COMPOSITION" />Encounter</h1>
+            <a id="_ExpandAll" class="clickabletree ExpandAllLink" href="javascript:toggleExpandAll('')">Collapse All</a>   
+            <a id="_annotationCommand" class="clickabletree" href="javascript:toggleAnnotations('')">Show Annotations</a>
+            <div style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.15cm; padding-bottom:0.25cm;  display:block; ">
+                <div id="context_node" style="margin-left:0.5cm;">
+                    <p class="clickabletree">
+                        <a class="clickabletree" href="javascript:toggleList('s_1')">[+/-]</a>
+                        <span>other_context [1]</span>
+                    </p>
+                    <div id="s_1" class="expandable" style="display:block; margin-left:0.5cm;" />
+                    <!--1-->
+                </div>
+                <div style="margin-left:0.05cm;" id="root1">
+                    <h3 class="clickabletree">
+                        <a class="clickabletree" href="javascript:toggleList('s_1.1')">[+/-]</a>
+                        <img class="image" src="pics/archetypes/small/observation.png" align="middle" alt="OBSERVATION" />
+                        <span title="A medida local da pressão sanguínea arterial, a qual é uma substituta da pressão arterial na circulação arterial sistêmica. Mais comumente o uso do termo pressão arterial se refere à medida da pressão da artéria braquial no antebraço.">Pressão Arterial
+                            <font color="#C0C0C0"> [0..*] 
+                            </font>
+                        </span>
+                    </h3>
+                    <div id="s_1.1" class="expandable" style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.25cm; padding-bottom:0.25cm;  display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                        <div id="s_1.1.1.1" class="expandable" style=" display:block; ">
+                            <div id="s_1.1.1.1.1" class="expandable" style=" display:block; ">
+                                <div id="s_1.1.1.1.1.1.1" class="expandable" style=" display:block; ">
+                                    <p class="clickabletree">
+                                        <img class="image" src="pics/archetypes/datatypes/small/quantity.png" align="middle" alt="ELEMENT" />
+                                        <span title="Pressão arterial sistêmica máxima - medida na fase sistólica ou de contração do ciclo cardíaco.">
+                                            Sistólica
+                                            <font color="#C0C0C0">
+                                            </font>  
+                                            <!--input size="4" name="/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value" value="1.1" /--> 
+                                            <em class="" title="">
+                                                ${map['/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value'][0]}
+                                            </em>
+                                            mm[Hg]
+                                        </span>
+                                    </p>
+                                    <p class="clickabletree">
+                                        <img class="image" src="pics/archetypes/datatypes/small/quantity.png" align="middle" alt="ELEMENT" />
+                                        <span title="Pressão arterial sistêmica mínima - medida na fase diastólica ou de  dilatação do ciclo cardíaco.">
+                                            Diastólica
+                                            <font color="#C0C0C0">
+                                            </font>  
+                                            <!--input size="4" name="/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value" value="2.2"/--> 
+                                            <em class="" title="">
+                                                ${map['/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value'][0]}
+                                            </em>
+                                            mm[Hg]
+                                        </span>
+                                    </p>
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.1.1.1.1.1.1-->
+                                <div id="s_1.1.1.1.1.2.1" class="expandable" style=" display:block; ">
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.1.1.1.1.2.1--><!--keeps this div not empty-->
+                            </div>
+                            <!--s1.1.1.1.1-->
+                            <div id="s_1.1.1.1.2" class="expandable" style=" display:block; ">
+                                <div id="s_1.1.1.1.2.1.1" class="expandable" style=" display:block; ">
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.1.1.1.2.1.1-->
+                                <div id="s_1.1.1.1.2.2.1" class="expandable" style=" display:block; ">
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.1.1.1.2.2.1-->
+                                <!--keeps this div not empty-->
+                            </div>
+                            <!--s1.1.1.1.2-->
+                            <!--keeps this div not empty-->
+                        </div>
+                        <!--s1.1.1.1-->
+                        <div id="s_1.1.2.1" class="expandable" style=" display:block; ">
+                            <div id="s_1.1.2.1.2" class="expandable" style="" />
+                            <!--1.1.2.1.2-->
+                            <!--keeps this div not empty-->
+                        </div>
+                        <!--s1.1.2.1-->
+                        <!--keeps this div not empty-->
+                    </div>
+                    <!--s1.1-->
+                </div>
+                <div style="margin-left:0.05cm;" id="root2">
+                    <h3 class="clickabletree">
+                        <a class="clickabletree" href="javascript:toggleList('s_1.2')">[+/-]</a>
+                        <img class="image" src="pics/archetypes/small/observation.png" align="middle" alt="OBSERVATION" />
+                        <span title="As características observadas da respiração espontânea como seria comumente registrada como parte de uma observação de um &quot;sinal vital&quot;.">Respirações
+                            <font color="#C0C0C0"> [0..*] 
+                            </font>
+                        </span>
+                    </h3>
+                    <div id="s_1.2" class="expandable" style="border: 1px solid #ACACAC; margin-right:0.25cm; margin-bottom: 0.25cm; padding-bottom:0.25cm;  display:block; margin-left:0.6cm; padding-left:0.25cm; ">
+                        <div id="s_1.2.1.1" class="expandable" style=" display:block; ">
+                            <div id="s_1.2.1.1.1" class="expandable" style=" display:block; ">
+                                <div id="s_1.2.1.1.1.1.1" class="expandable" style=" display:block; ">
+                                    <p class="clickabletree">
+                                        <img class="image" src="pics/archetypes/datatypes/small/quantity.png" align="middle" alt="ELEMENT" />
+                                        <span title="Frequência respiratória">
+                                            Frequência
+                                            <font color="#C0C0C0">
+                                            </font>  
+                                            <!--input size="4" name="/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value" value="3.3" /--> 
+                                            <em class="" title="">
+                                                ${map['/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value'][0]}
+                                            </em>
+                                            /min
+                                        </span>
+                                    </p>
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.2.1.1.1.1.1-->
+                                <div id="s_1.2.1.1.1.2.1" class="expandable" style=" display:block; ">
+                                    <!--keeps this div not empty-->
+                                </div>
+                                <!--s1.2.1.1.1.2.1--><!--keeps this div not empty-->
+                            </div>
+                            <!--s1.2.1.1.1--><!--keeps this div not empty-->
+                        </div>
+                        <!--s1.2.1.1--><!--keeps this div not empty-->
+                    </div>
+                    <!--s1.2-->
+                </div>
+                <!--keeps this div not empty-->
+            </div>
+        </div>
+    </body>
+</html>
+<!--HTML automatically generated by Operational Template To HTML Tree transform v1.2 (26 March 2010).-->

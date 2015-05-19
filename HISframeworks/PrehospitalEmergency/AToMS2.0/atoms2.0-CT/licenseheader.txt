@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix} Copyright © 2011-2015, MARTIN Development Group / LNCC. 
+${licensePrefix} All Rights Reserved.
+${licensePrefix} Read file LICENSE.txt for conditions on the use of this software.
+<#if licenseLast??>
+${licenseLast}
+</#if>

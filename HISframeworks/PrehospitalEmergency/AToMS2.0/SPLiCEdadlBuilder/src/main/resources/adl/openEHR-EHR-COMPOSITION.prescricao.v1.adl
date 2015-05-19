@@ -1,0 +1,64 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.prescricao.v1
+
+concept
+	[at0000]	-- Prescricao
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"89108E17B3C9CF5D7F886687431E7295">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Prescricao
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		content cardinality matches {0..*; unordered} matches {
+			allow_archetype INSTRUCTION[at0001] occurrences matches {0..*} matches {	-- Medicacao
+				include
+					archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.medication_order(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype INSTRUCTION[at0002] occurrences matches {0..*} matches {	-- Pedidos de exame
+				include
+					archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.request-imaging_exam(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-INSTRUCTION\.request-lab_test(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-INSTRUCTION\.request-procedure(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-INSTRUCTION\.request-referral(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-INSTRUCTION\.request(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prescricao">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Medicacao">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Pedidos de exame">
+					description = <"*">
+				>
+			>
+		>
+	>

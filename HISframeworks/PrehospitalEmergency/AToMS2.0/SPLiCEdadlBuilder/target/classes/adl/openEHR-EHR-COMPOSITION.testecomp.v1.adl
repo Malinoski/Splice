@@ -1,0 +1,56 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.testecomp.v1
+
+concept
+	[at0000]	-- Testecomp
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"A4C3DEC1F4BBCC3CC4840D4E2267DA30">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Testecomp
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype OBSERVATION[at0002] occurrences matches {0..*} matches {	-- OBSERVATION
+				include
+					archetype_id/value matches {/openEHR-EHR-OBSERVATION\.blood_pressure(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-OBSERVATION\.respiration(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Testecomp">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"OBSERVATION">
+					description = <"*">
+				>
+			>
+		>
+	>
